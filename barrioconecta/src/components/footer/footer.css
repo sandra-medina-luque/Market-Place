@@ -1,0 +1,30 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+.footer{
+    height: 92px;   
+    width: 100%;
+    font-size: 18px;
+    background-color: #0B736A;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 30px;
+}
+
+.redesfooter{
+    display: flex;
+    padding-right: 30px;
+}
+
+.instafooter, .facefooter, .twitterfooter {
+    width: 60px;
+    height: 60px;
+}
+
+.instafooter, .facefooter{ margin-right: 15px;}
+
+.twitterfooter{ margin-right: 30px;}
