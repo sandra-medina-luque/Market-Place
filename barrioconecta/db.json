@@ -1,1 +1,20 @@
-{}
+{
+    "users": [
+      {
+        "id": "1",
+        "nombre": "marina",
+        "apellido": "maria",
+        "apellido2": "maria",
+        "email": "maiaia@gmail.com",
+        "telefono": "111111111"
+      },
+      {
+        "id": "5",
+        "nombre": "hola",
+        "apellido": "cuc",
+        "apellido2": "cucu",
+        "email": "cucu@gmail.com",
+        "telefono": "234234234"
+      }
+    ]
+  }
