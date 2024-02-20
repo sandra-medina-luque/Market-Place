@@ -19,20 +19,20 @@ export const UserService = {
         return User
     },
 
-    async authenticateUser(username, password) {
-        try {
-            const response = await apiClient.post("/login", {
-                username,
-                password,
-            });
+    // async authenticateUser(username, password) {
+       // try {
+          //  const response = await apiClient.post("/user", {
+           //     username,
+           //     password,
+           // });
 
             // Puedes devolver la respuesta completa o solo los datos necesarios
-            return response;
-        } catch (error) {
+           // return response;
+       // } catch (error) {
             // Manejar errores aquí
-            throw error;
-        }
-    },
+           // throw error;
+       // }
+   // },
 };
 
 

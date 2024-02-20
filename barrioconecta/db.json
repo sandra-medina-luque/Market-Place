@@ -1,8 +1,13 @@
 {
-    "user":[
-        {
-            "username" : "Gaby",
-            "password" : "barrioconecta"
-        }
-    ]
+  "user": [
+    {
+      "username": "Gaby",
+      "password": "barrioconecta"
+    },
+    {
+      "id": "8219",
+      "username": "Gaby",
+      "password": "barrioconecta"
+    }
+  ]
 }
