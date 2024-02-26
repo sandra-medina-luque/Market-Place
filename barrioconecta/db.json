@@ -1,1 +1,10 @@
-{}
+{
+    "service": [
+        {
+            "servicename": "",
+            "img":"",
+            "description":"",
+            "price":""
+        }
+    ]
+}
