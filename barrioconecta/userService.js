@@ -26,3 +26,8 @@ export const createService = async (service) => {
     const response = await axios.post(`${API_URL}/service`, service);
     return response.data;
 };
+
+export const getServices = async () => {
+      const response = await axios.get(`${API_URL}/userService`);
+      return response.data;
+    };
