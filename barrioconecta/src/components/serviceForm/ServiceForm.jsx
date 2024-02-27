@@ -4,13 +4,12 @@ import '../serviceForm/serviceForm.css'
 import { userService } from "../../../userService"
 import UserServiceCard from "../userServiceCard/UserServiceCard";
 import Swal from 'sweetalert2';
-import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
+import { Cloudinary } from 'cloudinary-core';
 
-function ServiceForm(cloudinary) {
+
+function ServiceForm() {
     const [userServices, setUserServices] = useState([]);
-    const cld = new CloudinaryCore({ cloud: { cloudName: 'dgtkeuzft', uploadPreset:'xu0rprvd' } });
-
-
+    const cloudinary = new Cloudinary({ cloud_name: 'dgtkeuzft',api_key:'218195564675455',api_secret:'VdCth0EexRFyU0RNgiCXKp7D2G4', upload_preset: 'xu0rprvd' }); // Ajusta los parámetros según tu configuración de Cloudinary
 
     const [service, setService] = useState({
         name: '',
@@ -22,18 +21,16 @@ function ServiceForm(cloudinary) {
     const { getRootProps, getInputProps } = useDropzone({
         accept: 'image/*',
         onDrop: (acceptedFiles) => {
-            const file = acceptedFiles[0];
-            const uploadPromise = cloudinary.uploader.upload(file);
-
-            uploadPromise
-                .then((result) => {
-                    const imageUrl = cld.image(result.public_id).toURL();
-                    setService(prevService => ({ ...prevService, image: imageUrl }));
-                })
-                .catch((error) => {
-                    console.error('Error en la carga de la imagen a Cloudinary:', error);
+              const file = acceptedFiles[0];
+              try {
+                cloudinary.uploader.upload(file, (result) => {
+                  const imageUrl = cloudinary.url(result.public_id, { resource_type: 'image' });
+                  setService((prevService) => ({ ...prevService, image: imageUrl }));
                 });
-        },
+              } catch (error) {
+                console.error('Error uploading file to Cloudinary:', error);
+              }
+            },
     });
 
     useEffect(() => {
@@ -54,10 +51,7 @@ function ServiceForm(cloudinary) {
         const createdService = await userService.createService(service);
         console.log('Servicio creado:', createdService);
 
-        // Actualizar el estado con el servicio creado
         setUserServices([...userServices, createdService]);
-
-        // Reiniciar el formulario
         setService({ name: '', description: '', image: '', price: '' });
 
         Swal.fire({
@@ -68,7 +62,6 @@ function ServiceForm(cloudinary) {
     };
 
     return (
-
         <>
             <form onSubmit={handleSubmit}>
                 <div {...getRootProps()}>
@@ -87,9 +80,7 @@ function ServiceForm(cloudinary) {
                 <textarea
                     id="description"
                     value={service.description}
-                    onChange={(e) =>
-                        setService({ ...service, description: e.target.value })
-                    }
+                    onChange={(e) => setService({ ...service, description: e.target.value })}
                 />
                 <label htmlFor="price">Precio:</label>
                 <input
@@ -100,9 +91,13 @@ function ServiceForm(cloudinary) {
                 />
                 <button type="submit">Crear servicio</button>
             </form>
-            <div>
-                {userServices.map((userService) => (
-                    <UserServiceCard key={userService.id} userService={userService} />
+            <div className="row">
+                {userServices.map((createdService) => (
+                    <UserServiceCard
+                        key={createdService.id}
+                        userService={createdService}
+                        imageUrl={service.image}
+                    />
                 ))}
             </div>
         </>

@@ -1,17 +1,12 @@
 import React from 'react';
 import { userService } from '../../../userService';
+import '../userServiceCard/userServiceCard.css'
 
 
 
-const UserServiceCard = ({ userService }) => {
-    let imageUrl;
 
-    try {
-      imageUrl = cld.image(userService.image).toURL();
-    } catch (error) {
-      console.error('Error generando la URL de la imagen:', error);
-      // Puedes asignar una URL de imagen predeterminada o realizar otra acción según tus necesidades
-    }
+const UserServiceCard = ({ userService, imageUrl }) => {
+   
   
     return (
       <div className="col-md-4 mb-4">
