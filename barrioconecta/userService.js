@@ -9,7 +9,7 @@ const apiClient = axios.create({
     }
 });
 
-export const UserService = {
+export const userService = {
 
     async getUser() {
 
@@ -20,14 +20,24 @@ export const UserService = {
     },
 
 
+    async createService(newServiceData) {
+        let response = await apiClient.post("/service", newServiceData);
+        let createdService = response.data;
+    
+        return createdService;
+    },
+
+    async getServices() {
+
+       let response = await apiClient.get("/service");
+       let Service =response.data;
+
+       return Service;
+    },
+
+
+
 };
 
-export const createService = async (service) => {
-    const response = await axios.post(`${API_URL}/service`, service);
-    return response.data;
-};
 
-export const getServices = async () => {
-      const response = await axios.get(`${API_URL}/userService`);
-      return response.data;
-    };
+

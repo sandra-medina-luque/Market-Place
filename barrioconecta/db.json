@@ -1,10 +1,65 @@
 {
-    "service": [
-        {
-            "servicename": "",
-            "img":"",
-            "description":"",
-            "price":""
-        }
-    ]
+  "user": [
+    {
+      "username": "Gaby",
+      "password": "barrioconecta"
+    }
+  ],
+  "service": [
+    {
+      "name": "",
+      "img": "",
+      "description": "",
+      "price": ""
+    },
+    {
+      "id": "262b",
+      "name": "fjfjtgf",
+      "description": "jhgcjhgc",
+      "image": null,
+      "price": "45"
+    },
+    {
+      "id": "cf21",
+      "name": "",
+      "description": "",
+      "image": null,
+      "price": ""
+    },
+    {
+      "id": "1ac1",
+      "name": "sandra",
+      "description": "fjg",
+      "image": null,
+      "price": "34"
+    },
+    {
+      "id": "3d94",
+      "name": "hola",
+      "description": "tengo bigote",
+      "image": "",
+      "price": "300"
+    },
+    {
+      "id": "9f1b",
+      "name": "",
+      "description": "",
+      "image": "",
+      "price": ""
+    },
+    {
+      "id": "e524",
+      "name": "",
+      "description": "",
+      "image": "",
+      "price": ""
+    },
+    {
+      "id": "006c",
+      "name": "",
+      "description": "",
+      "image": "",
+      "price": ""
+    }
+  ]
 }

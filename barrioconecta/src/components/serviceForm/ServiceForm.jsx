@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDropzone } from "react-dropzone";
 import '../serviceForm/serviceForm.css'
-import { userService } from "../../../userService";
+import { userService } from "../../../userService"
+import UserServiceCard from "../userServiceCard/UserServiceCard";
 import Swal from 'sweetalert2';
+import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
+
+function ServiceForm(cloudinary) {
+    const [userServices, setUserServices] = useState([]);
+    const cld = new CloudinaryCore({ cloud: { cloudName: 'dgtkeuzft', uploadPreset:'xu0rprvd' } });
 
 
-
-function ServiceForm() {
-
-    const [userServices, setUserServices] = ([]);
 
     const [service, setService] = useState({
         name: '',
         description: '',
-        image: null,
+        image: '',
         price: '',
     });
-
 
     const { getRootProps, getInputProps } = useDropzone({
         accept: 'image/*',
@@ -23,16 +25,25 @@ function ServiceForm() {
             const file = acceptedFiles[0];
             const uploadPromise = cloudinary.uploader.upload(file);
 
-            uploadPromise.then((result) => {
-                setService({ ...service, image: result.secure_url });
-            });
+            uploadPromise
+                .then((result) => {
+                    const imageUrl = cld.image(result.public_id).toURL();
+                    setService(prevService => ({ ...prevService, image: imageUrl }));
+                })
+                .catch((error) => {
+                    console.error('Error en la carga de la imagen a Cloudinary:', error);
+                });
         },
     });
 
     useEffect(() => {
         const fetchServices = async () => {
-            const fetchedServices = await getServices();
-            setUserServices(fetchedServices);
+            try {
+                const fetchedServices = await userService.getServices();
+                setUserServices(fetchedServices);
+            } catch (error) {
+                console.error('Error al obtener servicios:', error);
+            }
         };
 
         fetchServices();
@@ -40,11 +51,14 @@ function ServiceForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const createdService = await userService(service);
+        const createdService = await userService.createService(service);
         console.log('Servicio creado:', createdService);
 
+        // Actualizar el estado con el servicio creado
+        setUserServices([...userServices, createdService]);
+
         // Reiniciar el formulario
-        setService({ name: '', description: '', image: null, price: '' });
+        setService({ name: '', description: '', image: '', price: '' });
 
         Swal.fire({
             icon: 'success',
@@ -54,10 +68,12 @@ function ServiceForm() {
     };
 
     return (
+
         <>
             <form onSubmit={handleSubmit}>
                 <div {...getRootProps()}>
-                    <input {...getInputProps()} />
+                    <input {...getInputProps()}
+                    />
                     <p>Arrastre y suelte algunos archivos aquí, o haga clic para seleccionar archivos</p>
                 </div>
                 <label htmlFor="name">Nombre:</label>
@@ -91,5 +107,6 @@ function ServiceForm() {
             </div>
         </>
     );
-};
+}
+
 export default ServiceForm;
