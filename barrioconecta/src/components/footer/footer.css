@@ -18,7 +18,7 @@
 .textfooter {
     display: flex;
     margin-right: 30px;
-    margin-bottom: 15px;
+    
 }
 
 .copy {
@@ -52,6 +52,8 @@
         padding-top: 30px;
         padding-bottom: 30px;
     }
+
+.textfooter{margin-bottom: 15px;}
 
     .redesfooter {
         padding-right: 0px;
