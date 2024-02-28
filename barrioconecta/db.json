@@ -1,1 +1,25 @@
-{}
+{
+    "user": [
+      {
+        "username": "Gaby",
+        "password": "barrioconecta",
+        "id": "ce10"
+      }
+    ],
+    "service": [
+      {
+        "name": "Inglés",
+        "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709057268/curso-ingles-ni%C3%B1os_kgypc2.jpg",
+        "description": "Inglés nivel medio para niños",
+        "price": "30€/hora",
+        "id": "3987"
+      },
+      {
+        "id": "efe2",
+        "name": "",
+        "description": "",
+        "image": "",
+        "price": ""
+      }
+    ]
+  }
