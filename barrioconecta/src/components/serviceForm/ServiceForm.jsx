@@ -43,21 +43,28 @@ function ServiceForm() {
     // Elimina el servicio con el ID especificado
     useEffect(() => {
         if (deletedServiceId) {
-          const fetchDeleteService = async () => {
-            try {
-              await userService.deleteService(deletedServiceId);
-              console.log('Servicio eliminado:', deletedServiceId);
-              const updatedServices = userServices.filter((service) => service.id !== deletedServiceId);
-              setUserServices(updatedServices);
-              setDeletedServiceId(null);
-            } catch (error) {
-              console.error('Error eliminando servicio:', error);
-            }
-          };
-      
-          fetchDeleteService();
+            const fetchDeleteService = async () => {
+                try {
+                    await userService.deleteService(deletedServiceId);
+                    console.log('Servicio eliminado:', deletedServiceId);
+                    const updatedServices = userServices.filter((service) => service.id !== deletedServiceId);
+                    setUserServices(updatedServices);
+                    setDeletedServiceId(null);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: 'Se ha eliminado el servicio exitosamente.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } catch (error) {
+                    console.error('Error eliminando servicio:', error);
+                }
+            };
+
+            fetchDeleteService();
         }
-      }, [deletedServiceId, userServices]);
+    }, [deletedServiceId, userServices]);
 
     const cloudinaryApiUrl = 'https://api.cloudinary.com/v1_1/<dgtkeuzft>/image/upload';
 
