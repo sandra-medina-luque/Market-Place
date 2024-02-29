@@ -22,7 +22,9 @@
 ***
 ✏️ `FIGMA:` https://www.figma.com/file/7QYSuaxzsmDpb0q9Ty7CEw/Proyecto5?type=design&node-id=254-408&mode=design&t=LVEPsNHsjUa4swlh-0
 ***
-:clipboard:`TRELLO:` https://trello.com/b/q1puwf1A/market-place
+📋:`TRELLO:` https://trello.com/b/q1puwf1A/market-place
+***
+📊:`MIRO:`https://miro.com/app/board/uXjVNsqr4zo=/
 ***
 🔧 `STACKS:` 
 + React-JSX 
