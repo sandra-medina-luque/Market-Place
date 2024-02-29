@@ -2,27 +2,27 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 
-
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [searchQuery, setSearchQuery] = useState(''); //para el buscador
+    const [desplegableVisible, setDesplegableVisible] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
 
-    const handleSearchChange = (event) => { //para el buscador
+    const toggleDesplegable = () => {
+        setDesplegableVisible(!desplegableVisible);
+    };
+
+    const handleSearchChange = (event) => {
         setSearchQuery(event.target.value);
     };
 
     const handleSearchSubmit = (event) => {
-        // Puedes realizar alguna acción cuando se envía el formulario de búsqueda
-        // Por ejemplo, redirigir a una página de resultados de búsqueda
         console.log('Buscar:', searchQuery);
         event.preventDefault();
     };
-
-
 
     return (
         <>
@@ -33,13 +33,13 @@ function Navbar() {
                     <div className="bar"></div>
                 </div>
 
-                <NavLink to="/home">
-                    <img className="link" id="logo" src="public/icons nav&footer/logobarrio.svg" alt="logo Barrio Conecta" />
-                </NavLink>
+                    <NavLink to="/home">
+                        <img className="link" id="logo" src="public/icons nav&footer/logobarrio.svg" alt="logo Barrio Conecta" />
+                    </NavLink>
 
-                <div className="overlay" onClick={toggleMenu}></div>
+                    <div className="overlay" onClick={toggleMenu}></div>
 
-                <div className="searchContainer">
+                    <div className="searchContainer">
                         <form onSubmit={handleSearchSubmit}>
                             <input
                                 type="text"
@@ -48,28 +48,30 @@ function Navbar() {
                                 onChange={handleSearchChange}
                             />
                         </form>
-                </div>
-
+                    </div>
+    
                 <div className="iconHolder">
-
-                    <NavLink to="/desplegable">
-                        <div className="servicios link">
-                            <h3>Servicios</h3>
-                        </div>
-                    </NavLink>
+                    <div className="servicios link" onClick={toggleDesplegable}>
+                        <h3>Servicios</h3>
+                        <img className="arrow-icon" src="public/icons nav&footer/arrow-icon.svg" alt="Icono flecha hacia abajo" />
+                        {desplegableVisible && (
+                            <div className="dropdownContent">
+                                <NavLink to="/servicio1">Inglés</NavLink>
+                                <NavLink to="/servicio2">Física</NavLink>
+                                <NavLink to="/servicio3">Matemáticas</NavLink>
+                            </div>
+                        )}
+                    </div>
 
                     <NavLink to="/login">
                         <div className="login link">
                             <h3>Iniciar Sesión</h3>
                         </div>
                     </NavLink>
-
-                    
-
                 </div>
             </nav>
         </>
-    )
+    );
 }
 
-export default Navbar
+export default Navbar;

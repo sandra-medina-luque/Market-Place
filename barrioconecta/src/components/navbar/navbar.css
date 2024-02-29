@@ -1,13 +1,20 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+
 nav {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
-    
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 20px;
-    background-color: #0B736A ;
+    background-color: #0B736A;
     height: 167px;
+    width: 100%;
 }
 
 .iconHolder,
@@ -15,16 +22,21 @@ nav {
 .login {
     display: flex;
     align-items: center;
-    margin: 5px;
+
+}
+
+.arrow-icon {
+    margin-left: 15px;
 }
 
 .iconHolder {
-    margin-right: 60px;
+    margin-right: 30px;
 }
 
 .servicios {
-    margin-right: 80px;
+    margin-right: 30px;
 }
+
 #logo {
     width: 90px;
     height: 90px;
@@ -33,16 +45,20 @@ nav {
     top: 40px;
     transition: transform 0.5s ease-in-out;
 }
+
 input:focus {
-    border-color: #fa0780; }
+    background-color: #FEE846;
+    border: #0B736A;
+}
 
 #logo:hover {
     transform: rotate(360deg) scale(1.1);
 }
 
-.login:hover, .servicios:hover{
-    color:#FEE846;
-} 
+.login:hover,
+.servicios:hover {
+    color: #FEE846;
+}
 
 a {
     text-decoration: none;
@@ -61,25 +77,16 @@ a {
 
 .link .active {
     color: #D9D9D9;
-} 
+}
 
-.menuOpen .link:not(.active):hover  {
+.menuOpen .link:not(.active):hover {
     color: none;
     font-size: 20px;
 }
-.searchContainer{
-    margin-right: 170px;
-}
 
-
-form {
-    display: flex;
-    align-items: center;
-    margin-left: 100px;
-}
 
 input {
-    width: 600px;
+    width: 400px;
     height: 30px;
     font-size: 20px;
     padding: 5px;
@@ -89,10 +96,32 @@ input {
 }
 
 input:focus {
-    border-color: #FEE846; }
-    
+    border-color: #FEE846;
+}
 
-@media screen and (max-width: 520px) {
+.dropdownContent {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #D9D9D9;
+    color: #0B736A;
+    margin-top: 220px;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.dropdownContent>a {
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.dropdownContent>a:hover {
+    background-color: #FEE846;
+    border-radius: 5px;
+}
+
+
+@media screen and (max-width: 950px){
 
     .navBar {
         display: flex;
@@ -117,18 +146,21 @@ input:focus {
         display: none;
         flex-direction: column;
         align-items: center;
-        margin-top: 10px;
+        margin-top: 20px;
         transition: max-height 0.5s ease;
         position: fixed;
-        top: 60px;
-        background-color: #F8DBDC;
-        border-radius: 20px;
-        width: 150px;
+        top: 100px;
+        background-color:#D9D9D9;
+        color:#0B736A;
+        border-radius: 10px;
+        width: 200px;
+        height: 100px;
         z-index: 2;
     }
 
     .link {
         font-size: 20px;
+        padding: 10px;
     }
 
 
@@ -146,8 +178,8 @@ input:focus {
     #logo {
         width: 80px;
         height: 80px;
-        top: 10px;
-        left: 20px;
+        top: 43px;
+        left: 43px;
     }
 
     .icon {
@@ -170,24 +202,55 @@ input:focus {
 
     .menuOpen .bar:nth-child(1) {
         transform: rotate(-45deg) translate(-6px, 7px);
-        background-color: #fa0780;
+        background-color:#FEE846;
     }
 
     .menuOpen .bar:nth-child(2) {
         opacity: 0;
-        background-color: #fa0780;
+        background-color:#FEE846;
     }
 
     .menuOpen .bar:nth-child(3) {
         transform: rotate(45deg) translate(-5px, -7px);
-        background-color: #fa0780;
+        background-color:#FEE846;
     }
 
-   
+    .menuOpen > .selink{
+        color: #0B736A;
+    }
+
+.searchContainer{
+    margin-left: 200px;
+}
 }
 
-@media screen and (max-width: 580px) {
-    #logo {
-        left: 20px;
+@media screen and (max-width: 950px){
+    .searchContainer{
+        margin-left: 150px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    input{
+        width: 200px;
+    }
+}
+
+@media (hover: none) {
+    .link:hover {
+        color: inherit;
+    }
+}
+
+@media screen and (max-width: 436px){
+    #logo{
+        width:60px;
+        height: 60px;
+        top:20px;
+        left:20px;
+    }
+
+    nav{
+        height: 100px;
     }
 }
