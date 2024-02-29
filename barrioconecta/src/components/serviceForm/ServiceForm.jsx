@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import '../serviceForm/serviceForm.css'
 import { userService } from "../../../userService"
 import UserServiceCard from "../userServiceCard/UserServiceCard";
 import Swal from 'sweetalert2';
-import { Cloudinary } from 'cloudinary-core';
+import { image } from "@cloudinary/url-gen/qualifiers/source";
+
 
 
 function ServiceForm() {
     const [userServices, setUserServices] = useState([]);
-    const cloudinary = new Cloudinary({ cloud_name: 'dgtkeuzft',api_key:'218195564675455',api_secret:'VdCth0EexRFyU0RNgiCXKp7D2G4', upload_preset: 'xu0rprvd' }); // Ajusta los parámetros según tu configuración de Cloudinary
 
     const [service, setService] = useState({
         name: '',
@@ -18,20 +18,12 @@ function ServiceForm() {
         price: '',
     });
 
-    const { getRootProps, getInputProps } = useDropzone({
-        accept: 'image/*',
-        onDrop: (acceptedFiles) => {
-              const file = acceptedFiles[0];
-              try {
-                cloudinary.uploader.upload(file, (result) => {
-                  const imageUrl = cloudinary.url(result.public_id, { resource_type: 'image' });
-                  setService((prevService) => ({ ...prevService, image: imageUrl }));
-                });
-              } catch (error) {
-                console.error('Error uploading file to Cloudinary:', error);
-              }
-            },
-    });
+
+    const onDrop = useCallback((acceptedFiles) => {
+        setService({ ...service, image: acceptedFiles[0] });
+    }, [service]);
+
+    const { getRootProps, getInputProps, isDragActive, acceptedFiles } = useDropzone({ onDrop });
 
     useEffect(() => {
         const fetchServices = async () => {
@@ -46,29 +38,74 @@ function ServiceForm() {
         fetchServices();
     }, []);
 
+
+    const cloudinaryApiUrl = 'https://api.cloudinary.com/v1_1/<dgtkeuzft>/image/upload';
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const createdService = await userService.createService(service);
-        console.log('Servicio creado:', createdService);
 
-        setUserServices([...userServices, createdService]);
-        setService({ name: '', description: '', image: '', price: '' });
+        // Crea un nuevo objeto FormData
+        const formData = new FormData();
 
-        Swal.fire({
-            icon: 'success',
-            title: '¡Éxito!',
-            text: 'Se ha creado correctamente el servicio de usuario.',
-        });
+        // Agrega el archivo de imagen al objeto FormData
+        formData.append('file', service.image);
+        formData.append('upload_preset', 'llrytk0i');
+        formData.append('api_key', '218195564675455');
+        formData.append('api_secret', 'VdCth0EexRFyU0RNgiCXKp7D2G4');
+
+        try {
+            // Envía una solicitud POST a la API de Cloudinary
+            const res = await fetch(cloudinaryApiUrl, {
+                method: 'POST',
+                body: formData,
+            });
+
+            // Analiza la respuesta como JSON
+            const data = await res.json();
+
+            // Extrae la URL de la imagen de la respuesta
+            const imageUrl = data.secure_url;
+
+            // Crea un nuevo objeto de servicio con la URL de la imagen
+            const createdService = {
+                name: service.name,
+                description: service.description,
+                image: imageUrl,
+                price: service.price,
+            };
+
+            // Guarda el nuevo servicio en tu estado
+            const newUserServices = [...userServices, createdService];
+            setUserServices(newUserServices);
+
+            // Guarda el nuevo servicio en tu JSON del lado del servidor
+            const savedService = await userService.createService(createdService);
+            console.log('Servicio creado:', savedService);
+
+            // Reinicia el estado del servicio
+            setService({ name: '', description: '', image: '', price: '' });
+
+            // Muestra alerta de éxito
+            Swal.fire({
+                icon: 'success',
+                title: '¡Éxito!',
+                text: 'Se ha creado correctamente el servicio de usuario.',
+            });
+
+        } catch (error) {
+            console.error('Error al crear el servicio:', error);
+        }
     };
-
     return (
         <>
             <form onSubmit={handleSubmit}>
                 <div {...getRootProps()}>
                     <input {...getInputProps()}
                     />
-                    <p>Arrastre y suelte algunos archivos aquí, o haga clic para seleccionar archivos</p>
+                    {isDragActive ? (<p> Drop the files here...</p>) : (<p>Drag 'n' drop some files here, or click to select files</p>)}
                 </div>
+                {service.image && <img src={URL.createObjectURL(service.image)} alt="" style={{ width: '300px', height: '300px' }} />}
                 <label htmlFor="name">Nombre:</label>
                 <input
                     type="text"
@@ -96,7 +133,7 @@ function ServiceForm() {
                     <UserServiceCard
                         key={createdService.id}
                         userService={createdService}
-                        imageUrl={service.image}
+                        imageUrl={createdService.image}
                     />
                 ))}
             </div>
