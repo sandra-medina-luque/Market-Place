@@ -75,9 +75,6 @@ a {
     padding: 20px;
 }
 
-.link .active {
-    color: #D9D9D9;
-}
 
 .menuOpen .link:not(.active):hover {
     color: none;
@@ -119,6 +116,15 @@ input:focus {
     background-color: #FEE846;
     border-radius: 5px;
 }
+
+.closeactive, .closedesable{
+    color:#D9D9D9;
+}
+
+.closeactive:hover, .closedesable:hover{
+    color:#FEE846;
+}
+
 
 
 @media screen and (max-width: 950px){
@@ -222,6 +228,14 @@ input:focus {
 .searchContainer{
     margin-left: 200px;
 }
+}
+
+.link:hover, .active {
+    color:#FEE846;
+}
+
+.menuOpen .link:not(.active):hover  {
+    color: none;
 }
 
 @media screen and (max-width: 950px){

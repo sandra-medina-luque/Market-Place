@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [desplegableVisible, setDesplegableVisible] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
+    const [isLoginPage, setIsLoginPage] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
+        setMenuOpen(!menuOpen); "login link"
     };
 
     const toggleDesplegable = () => {
@@ -20,9 +23,21 @@ function Navbar() {
     };
 
     const handleSearchSubmit = (event) => {
-        console.log('Buscar:', searchQuery);
         event.preventDefault();
+
+        if (searchQuery.toLowerCase() === 'cerrar sesión') {
+            // Aquí puedes agregar la lógica específica para cerrar sesión
+            // ...
+
+            // Redirigir a la página de inicio
+            navigate('/');
+        }
     };
+
+    useEffect(() => {
+        // Actualizar el estado de isLoginPage cuando cambia la ubicación
+        setIsLoginPage(location.pathname === '/login');
+    }, [location.pathname]);
 
     return (
         <>
@@ -33,45 +48,43 @@ function Navbar() {
                     <div className="bar"></div>
                 </div>
 
-                    <NavLink to="/home">
-                        <img className="link" id="logo" src="public/icons nav&footer/logobarrio.svg" alt="logo Barrio Conecta" />
-                    </NavLink>
+                <Link to="/">
+                    <img className="link" id="logo" src="public/icons nav&footer/logobarrio.svg" alt="logo Barrio Conecta" />
+                </Link>
 
-                    <div className="overlay" onClick={toggleMenu}></div>
+                <div className="overlay" onClick={toggleMenu}></div>
 
-                    <div className="searchContainer">
-                        <form onSubmit={handleSearchSubmit}>
-                            <input
-                                type="text"
-                                placeholder="&#128269; Buscar"
-                                value={searchQuery}
-                                onChange={handleSearchChange}
-                            />
-                        </form>
-                    </div>
-    
+                <div className="searchContainer">
+                    <form onSubmit={handleSearchSubmit}>
+                        <input
+                            type="text"
+                            placeholder="&#128269; Buscar"
+                            value={searchQuery}
+                            onChange={handleSearchChange}
+                        />
+                    </form>
+                </div>
+
                 <div className="iconHolder">
                     <div className="servicios link" onClick={toggleDesplegable}>
                         <h3>Servicios</h3>
                         <img className="arrow-icon" src="public/icons nav&footer/arrow-icon.svg" alt="Icono flecha hacia abajo" />
                         {desplegableVisible && (
                             <div className="dropdownContent">
-                                <NavLink to="/servicio1">Inglés</NavLink>
-                                <NavLink to="/servicio2">Física</NavLink>
-                                <NavLink to="/servicio3">Matemáticas</NavLink>
+                                <Link to="/servicio1">Inglés</Link>
+                                <Link to="/servicio2">Física</Link>
+                                <Link to="/servicio3">Matemáticas</Link>
                             </div>
                         )}
                     </div>
 
-                    <NavLink to="/login">
-                        <div className="login link">
-                            <h3>Iniciar Sesión</h3>
-                        </div>
-                    </NavLink>
+                    <h3>{isLoginPage ? <Link to="/" className={isLoginPage ? 'login closeactive' : 'closedesable'}>Cerrar Sesión</Link> : <Link to="/login" className={isLoginPage ? 'login closeactive' : 'closedesable'}>Iniciar Sesión</Link>}</h3>
+
                 </div>
             </nav>
         </>
     );
 }
+
 
 export default Navbar;
