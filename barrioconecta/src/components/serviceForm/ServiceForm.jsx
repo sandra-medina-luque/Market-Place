@@ -4,7 +4,7 @@ import '../serviceForm/serviceForm.css'
 import { userService } from "../../../userService"
 import UserServiceCard from "../userServiceCard/UserServiceCard";
 import Swal from 'sweetalert2';
-import { image } from "@cloudinary/url-gen/qualifiers/source";
+
 
 
 
@@ -16,6 +16,7 @@ function ServiceForm() {
         description: '',
         image: '',
         price: '',
+        category: 'Básico'
     });
 
 
@@ -45,10 +46,18 @@ function ServiceForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (!service.name || !service.price) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Campos Requeridos',
+                text: 'Por favor, completa los campos requeridos.',
+            });
+            return;
+        }
+
         // Crea un nuevo objeto FormData
         const formData = new FormData();
 
-        // Agrega el archivo de imagen al objeto FormData
         formData.append('file', service.image);
         formData.append('upload_preset', 'llrytk0i');
         formData.append('api_key', '218195564675455');
@@ -73,6 +82,7 @@ function ServiceForm() {
                 description: service.description,
                 image: imageUrl,
                 price: service.price,
+                category: service.category,
             };
 
             // Guarda el nuevo servicio en tu estado
@@ -84,7 +94,7 @@ function ServiceForm() {
             console.log('Servicio creado:', savedService);
 
             // Reinicia el estado del servicio
-            setService({ name: '', description: '', image: '', price: '' });
+            setService({ name: '', description: '', image: '', price: '', category: '' });
 
             // Muestra alerta de éxito
             Swal.fire({
@@ -119,13 +129,25 @@ function ServiceForm() {
                     value={service.description}
                     onChange={(e) => setService({ ...service, description: e.target.value })}
                 />
-                <label htmlFor="price">Precio:</label>
+                <label htmlFor="price">Precio (€/hora):</label>
                 <input
-                    type="text"
+                    type="number"
                     id="price"
                     value={service.price}
                     onChange={(e) => setService({ ...service, price: e.target.value })}
                 />
+
+                <label htmlFor="category">Categoría:</label>
+                <select
+                    id="category"
+                    value={service.category}
+                    onChange={(e) => setService({ ...service, category: e.target.value })}
+                >
+                    <option value="Basico">Básico</option>
+                    <option value="Medio">Medio</option>
+                    <option value="Avanzado">Avanzado</option>
+                    <option value="Certificado">Certificado</option>
+                </select>
                 <button type="submit">Crear servicio</button>
             </form>
             <div className="row">

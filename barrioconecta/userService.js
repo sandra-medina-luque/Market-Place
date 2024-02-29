@@ -35,7 +35,24 @@ export const userService = {
        return Service;
     },
 
+    async deleteService(serviceId) {
+        try {
+            const response = await apiClient.delete(`/service/${serviceId}`);
+            return response.data;
+        } catch (error) {
+            throw new Error(`Error deleting service with id ${serviceId}: ${error.message}`);
+        }
+    },
 
+    async editService(serviceId, updatedServiceData) {
+        try {
+            const response = await apiClient.put(`/service/${serviceId}`, updatedServiceData);
+            return response.data;
+        } catch (error) {
+            throw new Error(`Error editing service with id ${serviceId}: ${error.message}`);
+        }
+    }
+    
 
 };
 

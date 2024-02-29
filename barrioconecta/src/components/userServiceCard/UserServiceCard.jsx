@@ -15,7 +15,8 @@ const UserServiceCard = ({ userService, imageUrl }) => {
           <div className="card-body">
             <h4 className="card-title">{userService.name}</h4>
             <p className="card-text">{userService.description}</p>
-            <p className="card-text">Precio: {userService.price}</p>
+            <p className="card-text">Precio: {userService.price} €/hora</p>
+            <p className="card-text">{userService.category}</p>
           </div>
         </div>
       </div>

@@ -12,52 +12,25 @@
       "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709057268/curso-ingles-ni%C3%B1os_kgypc2.jpg",
       "description": "Inglés nivel medio para niños",
       "price": "30€/hora",
+      "category": "Básico",
       "id": "3987"
     },
+    
     {
-      "id": "ed36",
-      "name": "",
-      "description": "",
-      "price": ""
-    },
-    {
-      "id": "d65f",
-      "name": "",
-      "description": "",
-      "price": ""
-    },
-    {
-      "id": "b1d5",
-      "name": "",
-      "description": "",
-      "price": ""
-    },
-    {
-      "id": "0de7",
-      "name": "",
-      "description": "",
-      "price": ""
-    },
-    {
-      "id": "6dd3",
-      "name": "",
-      "description": "",
-      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709217105/qqwhcopevwxjictpsx9t.png",
-      "price": ""
-    },
-    {
-      "id": "8d3c",
-      "name": "",
-      "description": "",
-      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709217226/dgoaxhfsqhdmjeiqvijm.png",
-      "price": ""
-    },
-    {
-      "id": "4557",
+      "id": "430e",
       "name": "sandra",
-      "description": "ejkhdkdhgj",
-      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709217333/r6izmaxej9awa0z53t8x.png",
-      "price": "40"
+      "description": "hfhfh",
+      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709226284/kvwg3h9pt0zlasnlihiv.jpg",
+      "price": "30",
+      "category": "Medio"
+    },
+    {
+      "id": "bab4",
+      "name": "cocina con niños",
+      "description": "niños comiendo",
+      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709226488/bsmspnfb28fnkltbtlng.jpg",
+      "price": "10",
+      "category": "Medio"
     }
   ]
 }
