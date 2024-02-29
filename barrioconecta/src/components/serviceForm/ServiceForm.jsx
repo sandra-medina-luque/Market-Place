@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 
 function ServiceForm() {
     const [userServices, setUserServices] = useState([]);
+    const [deletedServiceId, setDeletedServiceId] = useState(null);
 
     const [service, setService] = useState({
         name: '',
@@ -39,6 +40,24 @@ function ServiceForm() {
         fetchServices();
     }, []);
 
+    // Elimina el servicio con el ID especificado
+    useEffect(() => {
+        if (deletedServiceId) {
+          const fetchDeleteService = async () => {
+            try {
+              await userService.deleteService(deletedServiceId);
+              console.log('Servicio eliminado:', deletedServiceId);
+              const updatedServices = userServices.filter((service) => service.id !== deletedServiceId);
+              setUserServices(updatedServices);
+              setDeletedServiceId(null);
+            } catch (error) {
+              console.error('Error eliminando servicio:', error);
+            }
+          };
+      
+          fetchDeleteService();
+        }
+      }, [deletedServiceId, userServices]);
 
     const cloudinaryApiUrl = 'https://api.cloudinary.com/v1_1/<dgtkeuzft>/image/upload';
 
@@ -107,6 +126,12 @@ function ServiceForm() {
             console.error('Error al crear el servicio:', error);
         }
     };
+
+    const handleDelete = (id) => {
+        setDeletedServiceId(id);
+    };
+
+
     return (
         <>
             <form onSubmit={handleSubmit}>
@@ -151,11 +176,12 @@ function ServiceForm() {
                 <button type="submit">Crear servicio</button>
             </form>
             <div className="row">
-                {userServices.map((createdService) => (
+                {userServices.filter((service) => service.id !== deletedServiceId).map((createdService) => (
                     <UserServiceCard
                         key={createdService.id}
                         userService={createdService}
                         imageUrl={createdService.image}
+                        onDelete={handleDelete}
                     />
                 ))}
             </div>
