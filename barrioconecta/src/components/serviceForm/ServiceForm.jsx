@@ -5,14 +5,10 @@ import { userService } from "../../../userService"
 import UserServiceCard from "../userServiceCard/UserServiceCard";
 import Swal from 'sweetalert2';
 
-
-
-
 function ServiceForm() {
     const [userServices, setUserServices] = useState([]);
     const [deletedServiceId, setDeletedServiceId] = useState(null);
     const [editingService, setEditingService] = useState(null);
-
 
     const [service, setService] = useState({
         name: '',
@@ -21,15 +17,13 @@ function ServiceForm() {
         price: '',
         category: 'Básico',
         stock: 0
-
     });
-
 
     const onDrop = useCallback((acceptedFiles) => {
         setService({ ...service, image: acceptedFiles[0] });
     }, [service]);
 
-    const { getRootProps, getInputProps, isDragActive, acceptedFiles } = useDropzone({ onDrop });
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
     useEffect(() => {
         const fetchServices = async () => {
@@ -44,39 +38,10 @@ function ServiceForm() {
         fetchServices();
     }, []);
 
-    // Elimina el servicio con el ID especificado
-    useEffect(() => {
-        if (deletedServiceId) {
-            const fetchDeleteService = async () => {
-                try {
-                    await userService.deleteService(deletedServiceId);
-                    console.log('Servicio eliminado:', deletedServiceId);
-                    const updatedServices = userServices.filter((service) => service.id !== deletedServiceId);
-                    setUserServices(updatedServices);
-                    setDeletedServiceId(null);
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Éxito',
-                        text: 'Se ha eliminado el servicio exitosamente.',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                } catch (error) {
-                    console.error('Error eliminando servicio:', error);
-                }
-            };
-
-            fetchDeleteService();
-        }
-    }, [deletedServiceId, userServices]);
-
     const cloudinaryApiUrl = 'https://api.cloudinary.com/v1_1/<dgtkeuzft>/image/upload';
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // Reinicia el estado de edición
 
         if (!service.name || !service.price) {
             Swal.fire({
@@ -87,29 +52,24 @@ function ServiceForm() {
             return;
         }
 
-        // Crea un nuevo objeto FormData
         const formData = new FormData();
-
         formData.append('file', service.image);
         formData.append('upload_preset', 'llrytk0i');
         formData.append('api_key', '218195564675455');
         formData.append('api_secret', 'VdCth0EexRFyU0RNgiCXKp7D2G4');
 
         try {
-            // Envía una solicitud POST a la API de Cloudinary
-            const res = await fetch(cloudinaryApiUrl, {
-                method: 'POST',
-                body: formData,
-            });
+            let imageUrl = service.image; // Use existing image URL for edit, or upload a new one for create
+            if (typeof service.image !== 'string') {
+                const res = await fetch(cloudinaryApiUrl, {
+                    method: 'POST',
+                    body: formData,
+                });
+                const data = await res.json();
+                imageUrl = data.secure_url;
+            }
 
-            // Analiza la respuesta como JSON
-            const data = await res.json();
-
-            // Extrae la URL de la imagen de la respuesta
-            const imageUrl = data.secure_url;
-
-            // Crea un nuevo objeto de servicio con la URL de la imagen
-            const createdService = {
+            const updatedService = {
                 name: service.name,
                 description: service.description,
                 image: imageUrl,
@@ -118,26 +78,32 @@ function ServiceForm() {
                 stock: service.stock,
             };
 
-            // Guarda el nuevo servicio en tu estado
-            const newUserServices = [...userServices, createdService];
-            setUserServices(newUserServices);
+            if (editingService) {
+                // Update existing service
+                await userService.editService(editingService.id, updatedService);
+                const updatedServices = userServices.map((service) =>
+                    service.id === editingService.id ? updatedService : service
+                );
+                setUserServices(updatedServices);
+                setEditingService(null);
+            } else {
+                // Create new service
+                const newUserServices = [...userServices, updatedService];
+                setUserServices(newUserServices);
+                const savedService = await userService.createService(updatedService);
+                console.log('Servicio creado:', savedService);
+            }
 
-            // Guarda el nuevo servicio en tu JSON del lado del servidor
-            const savedService = await userService.createService(createdService);
-            console.log('Servicio creado:', savedService);
+            setService({ name: '', description: '', image: '', price: '', category: '', stock: 0 });
 
-            // Reinicia el estado del servicio
-            setService({ name: '', description: '', image: '', price: '', category: '' });
-
-            // Muestra alerta de éxito
             Swal.fire({
                 icon: 'success',
                 title: '¡Éxito!',
-                text: 'Se ha creado correctamente el servicio de usuario.',
+                text: editingService ? 'Se ha actualizado correctamente el servicio.' : 'Se ha creado correctamente el servicio de usuario.',
             });
 
         } catch (error) {
-            console.error('Error al crear el servicio:', error);
+            console.error('Error al procesar el servicio:', error);
         }
     };
 
@@ -148,25 +114,21 @@ function ServiceForm() {
     const handleEdit = (id) => {
         const serviceToEdit = userServices.find((service) => service.id === id);
         setEditingService(serviceToEdit);
+        setService({ ...serviceToEdit, image: serviceToEdit.image }); // Set the image as a string to indicate it's not a new image
     };
-
-
 
     const handleSubmitEdit = async (e) => {
         e.preventDefault();
 
-        // Actualiza el servicio en el servidor
         try {
             await userService.editService(editingService.id, editingService);
             console.log(`Servicio con ID ${editingService.id} actualizado exitosamente en el servidor.`);
 
-            // Actualiza el servicio en la lista de servicios
             const updatedServices = userServices.map((service) =>
                 service.id === editingService.id ? editingService : service
             );
             setUserServices(updatedServices);
 
-            // Reinicia el estado de edición
             setEditingService(null);
         } catch (error) {
             console.error('Error actualizando servicio en el servidor:', error);
@@ -177,11 +139,10 @@ function ServiceForm() {
         <>
             <form onSubmit={handleSubmit}>
                 <div {...getRootProps()}>
-                    <input {...getInputProps()}
-                    />
+                    <input {...getInputProps()} />
                     {isDragActive ? (<p> Drop the files here...</p>) : (<p>Drag 'n' drop some files here, or click to select files</p>)}
                 </div>
-                {service.image && <img src={URL.createObjectURL(service.image)} alt="" style={{ width: '300px', height: '300px' }} />}
+                {service.image && <img src={typeof service.image === 'string' ? service.image : URL.createObjectURL(service.image)} alt="" style={{ width: '300px', height: '300px' }} />}
                 <label htmlFor="name">Nombre:</label>
                 <input
                     type="text"
@@ -202,7 +163,6 @@ function ServiceForm() {
                     value={service.price}
                     onChange={(e) => setService({ ...service, price: e.target.value })}
                 />
-
                 <label htmlFor="category">Categoría:</label>
                 <select
                     id="category"
@@ -214,7 +174,6 @@ function ServiceForm() {
                     <option value="Avanzado">Avanzado</option>
                     <option value="Certificado">Certificado</option>
                 </select>
-
                 <label htmlFor="stock">Stock:</label>
                 <input
                     type="number"
@@ -222,47 +181,9 @@ function ServiceForm() {
                     value={service.stock}
                     onChange={(e) => setService({ ...service, stock: parseInt(e.target.value, 10) })}
                 />
-                <button type="submit">Crear servicio</button>
+                <button type="submit">{editingService ? 'Guardar cambios' : 'Crear servicio'}</button>
             </form>
-            {editingService && (
-                <form onSubmit={handleSubmitEdit}>
-                    <input
-                        type="text"
-                        placeholder="Nombre"
-                        value={editingService.name}
-                        onChange={(e) => setEditingService({ ...editingService, name: e.target.value })}
-                    />
-                    <textarea
-                        placeholder="Descripción"
-                        value={editingService.description}
-                        onChange={(e) => setEditingService({ ...editingService, description: e.target.value })}
-                    />
-                    <input
-                        type="number"
-                        placeholder="Precio"
-                        value={editingService.price}
-                        onChange={(e) => setEditingService({ ...editingService, price: parseFloat(e.target.value) })}
-                    />
-                    <select
-                        placeholder="Categoria"
-                        value={editingService.category}
-                        onChange={(e) => setEditingService({ ...service, category: e.target.value })}
-                    >
-                        <option value="Basico">Básico</option>
-                        <option value="Medio">Medio</option>
-                        <option value="Avanzado">Avanzado</option>
-                        <option value="Certificado">Certificado</option>
-                    </select>
-                    <input
-                        type="number"
-                        placeholder="Stock"
-                        value={editingService.stock}
-                        onChange={(e) => setEditingService({ ...editingService, stock: parseFloat(e.target.value) })}
-                    />
-                    <button type="submit">Guardar</button>
-                    <button onClick={() => setEditingService(null)}>Cancelar</button>
-                </form>
-            )}
+            
             <div className="row">
                 {userServices.filter((service) => service.id !== deletedServiceId).map((createdService) => (
                     <UserServiceCard
