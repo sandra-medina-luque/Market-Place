@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: #0B736A;
+    height: 167px;
+    width: 100%;
+}
+
+.servicios {
+    margin-right: 30px;
+}
+
+#logo {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    transition: transform 0.5s ease-in-out;
+}
+
+
+#logo:hover {
+    transform: rotate(360deg) scale(1.1);
+}
+
+.login:hover {
+    color: #FEE846;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s, font-size 0.3s;
+}
+
+
+input {
+    width: 400px;
+    height: 30px;
+    font-size: 20px;
+    padding: 5px;
+    padding-left: 20px;
+    border: 1px solid #333;
+    border-radius: 20px;
+}
+
+input:focus {
+    border-color: #FEE846;
+}
+
+
+.closeactive,
+.closedesable {
+    color: #D9D9D9;
+}
+
+.closeactive:hover,
+.closedesable:hover {
+    color: #FEE846;
+}
+
+.closedesable {
+    margin-right: 50px;
+}
+
+
+@media screen and (max-width: 515px) {
+
+    .closedesable {
+        margin-right: 30px;
+    }
+}
