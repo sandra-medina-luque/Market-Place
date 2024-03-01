@@ -4,6 +4,7 @@ import Home from '../../Views/Home';
 import Login from '../../Views/Login';
 import Dashboard from '../../Views/Dashboard';
 import Welcome from '../../Views/Welcome';
+import Footer from '../footer/Footer';
 import './App.css'
 
 function App() {
@@ -12,11 +13,12 @@ function App() {
     <>
 
       <Routes>
-        <Route path="/welcome" element={<Welcome />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Welcome />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
+      <Footer />
     </>
   )
 }
