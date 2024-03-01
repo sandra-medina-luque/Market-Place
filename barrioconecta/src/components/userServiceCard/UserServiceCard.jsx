@@ -12,6 +12,7 @@ const UserServiceCard = ({ userService, imageUrl, onDelete }) => {
           <p className="card-text">{userService.description}</p>
           <p className="card-text">Precio: {userService.price} €/hora</p>
           <p className="card-text">{userService.category}</p>
+          <p className="card-text">Stock {userService.stock} horas</p>
         </div>
         <button onClick={() => onDelete(userService.id)}>
           Eliminar

@@ -17,7 +17,9 @@ function ServiceForm() {
         description: '',
         image: '',
         price: '',
-        category: 'Básico'
+        category: 'Básico',
+        stock: 0
+
     });
 
 
@@ -109,6 +111,7 @@ function ServiceForm() {
                 image: imageUrl,
                 price: service.price,
                 category: service.category,
+                stock: service.stock,
             };
 
             // Guarda el nuevo servicio en tu estado
@@ -180,6 +183,14 @@ function ServiceForm() {
                     <option value="Avanzado">Avanzado</option>
                     <option value="Certificado">Certificado</option>
                 </select>
+
+                <label htmlFor="stock">Stock:</label>
+                <input
+                    type="number"
+                    id="stock"
+                    value={service.stock}
+                    onChange={(e) => setService({ ...service, stock: parseInt(e.target.value, 10) })}
+                />
                 <button type="submit">Crear servicio</button>
             </form>
             <div className="row">
