@@ -6,12 +6,14 @@
    flex-direction: column;
    justify-content: center;
    align-items: center;
+   margin-left: 100%;
 }
 
 .logform{
     background-color: rgba(123, 136, 135, 1);
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     width: 600px;
     height: 350px;
     padding: 10px;
@@ -60,10 +62,16 @@
     font-weight: bolder;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
+    border: none;
 }
 .logbutton:hover {
-    background-color: whitesmoke;
+    background-color: white;
     color:rgb(11, 115, 106); 
     font-weight: bolder;
+    border:  none;
+}
+.logbutton:active {
+    color: black;
+    border: none;
 }
 
