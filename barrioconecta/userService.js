@@ -23,28 +23,38 @@ export const userService = {
     async createService(newServiceData) {
         let response = await apiClient.post("/service", newServiceData);
         let createdService = response.data;
-    
+
         return createdService;
     },
 
     async getServices() {
 
-       let response = await apiClient.get("/service");
-       let Service =response.data;
+        let response = await apiClient.get("/service");
+        let Service = response.data;
 
-       return Service;
+        return Service;
     },
 
     async deleteService(serviceId) {
-          try {
-              await apiClient.delete(`/service/${serviceId}`);
-              console.log(`Servicio con ID ${serviceId} eliminado exitosamente.`);
-          } catch (error) {
+        try {
+            await apiClient.delete(`/service/${serviceId}`);
+            console.log(`Servicio con ID ${serviceId} eliminado exitosamente.`);
+        } catch (error) {
             console.error('Error eliminando servicio:', error);
             throw error;
-            }
-         }
-    
+        }
+    },
+
+    async editService(serviceId, updatedServiceData) {
+        try {
+            await apiClient.put(`/service/${serviceId}`, updatedServiceData);
+            console.log(`Servicio con ID ${serviceId} actualizado exitosamente.`);
+        } catch (error) {
+            console.error('Error actualizando servicio:', error);
+            throw error;
+        }
+    },
+
 
 };
 

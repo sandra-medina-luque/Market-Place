@@ -2,7 +2,7 @@ import React from 'react';
 import { userService } from '../../../userService';
 import '../userServiceCard/userServiceCard.css'
 
-const UserServiceCard = ({ userService, imageUrl, onDelete }) => {
+const UserServiceCard = ({ userService, imageUrl, onDelete, onEdit}) => {
   return (
     <div className="col-md-4 mb-4">
       <div className="card h-100">
@@ -17,6 +17,7 @@ const UserServiceCard = ({ userService, imageUrl, onDelete }) => {
         <button onClick={() => onDelete(userService.id)}>
           Eliminar
         </button>
+        <button onClick={() => onEdit(userService.id)}>Editar</button>
       </div>
 
     </div>

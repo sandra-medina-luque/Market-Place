@@ -11,6 +11,8 @@ import Swal from 'sweetalert2';
 function ServiceForm() {
     const [userServices, setUserServices] = useState([]);
     const [deletedServiceId, setDeletedServiceId] = useState(null);
+    const [editingService, setEditingService] = useState(null);
+
 
     const [service, setService] = useState({
         name: '',
@@ -73,6 +75,8 @@ function ServiceForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Reinicia el estado de edición
 
         if (!service.name || !service.price) {
             Swal.fire({
@@ -141,6 +145,33 @@ function ServiceForm() {
         setDeletedServiceId(id);
     };
 
+    const handleEdit = (id) => {
+        const serviceToEdit = userServices.find((service) => service.id === id);
+        setEditingService(serviceToEdit);
+    };
+
+
+
+    const handleSubmitEdit = async (e) => {
+        e.preventDefault();
+
+        // Actualiza el servicio en el servidor
+        try {
+            await userService.editService(editingService.id, editingService);
+            console.log(`Servicio con ID ${editingService.id} actualizado exitosamente en el servidor.`);
+
+            // Actualiza el servicio en la lista de servicios
+            const updatedServices = userServices.map((service) =>
+                service.id === editingService.id ? editingService : service
+            );
+            setUserServices(updatedServices);
+
+            // Reinicia el estado de edición
+            setEditingService(null);
+        } catch (error) {
+            console.error('Error actualizando servicio en el servidor:', error);
+        }
+    };
 
     return (
         <>
@@ -193,6 +224,45 @@ function ServiceForm() {
                 />
                 <button type="submit">Crear servicio</button>
             </form>
+            {editingService && (
+                <form onSubmit={handleSubmitEdit}>
+                    <input
+                        type="text"
+                        placeholder="Nombre"
+                        value={editingService.name}
+                        onChange={(e) => setEditingService({ ...editingService, name: e.target.value })}
+                    />
+                    <textarea
+                        placeholder="Descripción"
+                        value={editingService.description}
+                        onChange={(e) => setEditingService({ ...editingService, description: e.target.value })}
+                    />
+                    <input
+                        type="number"
+                        placeholder="Precio"
+                        value={editingService.price}
+                        onChange={(e) => setEditingService({ ...editingService, price: parseFloat(e.target.value) })}
+                    />
+                    <select
+                        placeholder="Categoria"
+                        value={editingService.category}
+                        onChange={(e) => setEditingService({ ...service, category: e.target.value })}
+                    >
+                        <option value="Basico">Básico</option>
+                        <option value="Medio">Medio</option>
+                        <option value="Avanzado">Avanzado</option>
+                        <option value="Certificado">Certificado</option>
+                    </select>
+                    <input
+                        type="number"
+                        placeholder="Stock"
+                        value={editingService.stock}
+                        onChange={(e) => setEditingService({ ...editingService, stock: parseFloat(e.target.value) })}
+                    />
+                    <button type="submit">Guardar</button>
+                    <button onClick={() => setEditingService(null)}>Cancelar</button>
+                </form>
+            )}
             <div className="row">
                 {userServices.filter((service) => service.id !== deletedServiceId).map((createdService) => (
                     <UserServiceCard
@@ -200,6 +270,7 @@ function ServiceForm() {
                         userService={createdService}
                         imageUrl={createdService.image}
                         onDelete={handleDelete}
+                        onEdit={handleEdit}
                     />
                 ))}
             </div>

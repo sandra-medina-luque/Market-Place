@@ -114,6 +114,14 @@
       "price": "35",
       "category": "Certificado",
       "stock": "3"
+    },
+    {
+      "id": "7257",
+      "name": "bkjb",
+      "description": "gvjhb",
+      "price": "20",
+      "category": "Básico",
+      "stock": 0
     }
   ]
 }
