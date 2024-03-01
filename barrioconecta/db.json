@@ -44,7 +44,7 @@
       "stock": "3"
     },
     {
-      "id": "bab4",
+      "id": "4447",
       "name": "Inglés",
       "description": "Perfecciona tu dominio del inglés. Trabaja en la fluidez, la pronunciación precisa y la comprensión de textos más avanzados, además de desarrollar habilidades de escritura más elaboradas.",
       "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709283880/cwiukjzd4mird5mvkqdn.jpg",
@@ -53,7 +53,7 @@
       "stock": "3"
     },
     {
-      "id": "7038",
+      "id": "7777",
       "name": "Inglés",
       "description": "Perfecciona tu dominio del inglés. Trabaja en la fluidez, la pronunciación precisa y la comprensión de textos más avanzados, además de desarrollar habilidades de escritura más elaboradas.",
       "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709282563/tlghfnpiihihwmcregkg.png",
@@ -68,10 +68,10 @@
       "price": "30",
       "category": "Certificado",
       "stock": "3",
-      "id": "3987"
+      "id": "3333"
     },
     {
-      "id": "430e",
+      "id": "4444",
       "name": "Inglés",
       "description": "A2",
       "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709283159/oaq788vnaevljodnoehe.jpg",
@@ -80,7 +80,7 @@
       "stock": "3"
     },
     {
-      "id": "bab4",
+      "id": "bab2",
       "name": "Inglés",
       "description": "B1",
       "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709283052/kqx84ybqvkgimscqwwaw.jpg",
@@ -89,7 +89,7 @@
       "stock": "3"
     },
     {
-      "id": "7038",
+      "id": "7039",
       "name": "Inglés",
       "description": "B2",
       "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709283062/isjpyj7ej3brt07xh9fr.jpg",
@@ -98,7 +98,7 @@
       "stock": "3"
     },
     {
-      "id": "bab4",
+      "id": "ba45",
       "name": "Inglés",
       "description": "C1",
       "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709283282/le4wdziwuk3pm0747rwv.jpg",
@@ -107,7 +107,7 @@
       "stock": "3"
     },
     {
-      "id": "7038",
+      "id": "7030",
       "name": "Inglés",
       "description": "C2",
       "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709283237/fy3pugbygpfeek9mhray.jpg",
