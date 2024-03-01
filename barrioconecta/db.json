@@ -1,1 +1,119 @@
-{}
+{
+  "user": [
+    {
+      "username": "Gaby",
+      "password": "barrioconecta",
+      "id": "ce10"
+    }
+  ],
+  "service": [
+    {
+      "name": "Inglés",
+      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709282376/zq7ohty0do5g8e6hdcx8.jpg",
+      "description": "Aprende los fundamentos del inglés de manera divertida y accesible. Desde el abecedario hasta las frases simples para comunicarte en situaciones cotidianas",
+      "price": "15",
+      "category": "Básico",
+      "stock": "3",
+      "id": "3987"
+    },
+    {
+      "id": "430e",
+      "name": "Inglés",
+      "description": "Aprende los fundamentos del inglés de manera divertida y accesible. Desde el abecedario hasta las frases simples para comunicarte en situaciones cotidianas",
+      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709281440/zi0kap66vqwhbrq3v3ek.png",
+      "price": "20",
+      "category": "Básico",
+      "stock": "3"
+    },
+    {
+      "id": "bab4",
+      "name": "Inglés",
+      "description": "Refuerza tu habilidad para comunicarte en inglés. Amplía tu vocabulario, mejora tu comprensión auditiva y practica la construcción de oraciones más complejas para expresar tus ideas.",
+      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709281469/yreol5iafyh4yoahitim.jpg",
+      "price": "20",
+      "category": "Medio",
+      "stock": "3"
+    },
+    {
+      "id": "7038",
+      "name": "Inglés",
+      "description": "Refuerza tu habilidad para comunicarte en inglés. Amplía tu vocabulario, mejora tu comprensión auditiva y practica la construcción de oraciones más complejas para expresar tus ideas.",
+      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709284086/mvvvdom5tur2axnaza8o.jpg",
+      "price": "25",
+      "category": "Medio",
+      "stock": "3"
+    },
+    {
+      "id": "4447",
+      "name": "Inglés",
+      "description": "Perfecciona tu dominio del inglés. Trabaja en la fluidez, la pronunciación precisa y la comprensión de textos más avanzados, además de desarrollar habilidades de escritura más elaboradas.",
+      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709283880/cwiukjzd4mird5mvkqdn.jpg",
+      "price": "25",
+      "category": "Avanzado",
+      "stock": "3"
+    },
+    {
+      "id": "7777",
+      "name": "Inglés",
+      "description": "Perfecciona tu dominio del inglés. Trabaja en la fluidez, la pronunciación precisa y la comprensión de textos más avanzados, además de desarrollar habilidades de escritura más elaboradas.",
+      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709282563/tlghfnpiihihwmcregkg.png",
+      "price": "30",
+      "category": "Avanzado",
+      "stock": "3"
+    },
+    {
+      "name": "Inglés",
+      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709283151/nnje8romjhpnjvqzdoi2.jpg",
+      "description": "A1 ",
+      "price": "30",
+      "category": "Certificado",
+      "stock": "3",
+      "id": "3333"
+    },
+    {
+      "id": "4444",
+      "name": "Inglés",
+      "description": "A2",
+      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709283159/oaq788vnaevljodnoehe.jpg",
+      "price": "30",
+      "category": "Certificado",
+      "stock": "3"
+    },
+    {
+      "id": "bab2",
+      "name": "Inglés",
+      "description": "B1",
+      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709283052/kqx84ybqvkgimscqwwaw.jpg",
+      "price": "30",
+      "category": "Certificado",
+      "stock": "3"
+    },
+    {
+      "id": "7039",
+      "name": "Inglés",
+      "description": "B2",
+      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709283062/isjpyj7ej3brt07xh9fr.jpg",
+      "price": "30",
+      "category": "Certificado",
+      "stock": "3"
+    },
+    {
+      "id": "ba45",
+      "name": "Inglés",
+      "description": "C1",
+      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709283282/le4wdziwuk3pm0747rwv.jpg",
+      "price": "35",
+      "category": "Certificado",
+      "stock": "3"
+    },
+    {
+      "id": "7030",
+      "name": "Inglés",
+      "description": "C2",
+      "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709283237/fy3pugbygpfeek9mhray.jpg",
+      "price": "35",
+      "category": "Certificado",
+      "stock": "3"
+    }
+  ]
+}
