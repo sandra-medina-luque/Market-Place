@@ -3,6 +3,7 @@ import Home from '../../Views/Home';
 import { useState } from 'react'
 import './App.css'
 import { Routes, Route } from 'react-router-dom';
+import Welcome from '../welcome/Welcome'
 import Footer from '../footer/Footer';
 
 function App() {
@@ -11,13 +12,11 @@ function App() {
   return (
     <>
       <Routes>
-        <Route>
+        <Route path="/" element={<Welcome/>} />
+        
+       </Routes>
 
-        </Route>
-
-      </Routes>
-
-      <Footer />
+      {/* <Footer /> */}
         
     </>
   )
