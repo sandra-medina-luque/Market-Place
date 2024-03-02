@@ -17,7 +17,7 @@ function Navbar() {
             // ...
 
             // Redirigir a la página de inicio
-            navigate('/');
+            navigate('/home');
         }
     };
 
@@ -29,11 +29,11 @@ function Navbar() {
     return (
         <>
             <nav>
-                <Link to="/">
+                <Link to="/home">
                     <img className="link" id="logo" src="public/icons nav&footer/logobarrio.svg" alt="logo Barrio Conecta" />
                 </Link>
     
-                <h3><Link to="/" className={isLoginPage ? 'login closeactive' : 'closedesable'}>Cerrar Sesión</Link></h3> 
+                <h3><Link to="/home" className={isLoginPage ? 'login closeactive' : 'closedesable'}>Cerrar Sesión</Link></h3> 
             </nav>
         </>
     );
