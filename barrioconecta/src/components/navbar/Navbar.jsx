@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
+
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [desplegableVisible, setDesplegableVisible] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [isLoginPage, setIsLoginPage] = useState(false);
-    const navigate = useNavigate();
-    const location = useLocation();
+    
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen); "login link"
@@ -30,7 +30,7 @@ function Navbar() {
             // ...
 
             // Redirigir a la página de inicio
-            navigate('/');
+            navigate('/home');
         }
     };
 
@@ -48,12 +48,13 @@ function Navbar() {
                     <div className="bar"></div>
                 </div>
 
-                <Link to="/">
+
+                <Link to="/home">
                     <img className="link" id="logo" src="public/icons nav&footer/logobarrio.svg" alt="logo Barrio Conecta" />
                 </Link>
 
                 <div className="overlay" onClick={toggleMenu}></div>
-
+  
                 <div className="searchContainer">
                     <form onSubmit={handleSearchSubmit}>
                         <input
@@ -78,7 +79,9 @@ function Navbar() {
                         )}
                     </div>
 
-                    <h3>{isLoginPage ? <Link to="/" className={isLoginPage ? 'login closeactive' : 'closedesable'}>Cerrar Sesión</Link> : <Link to="/login" className={isLoginPage ? 'login closeactive' : 'closedesable'}>Iniciar Sesión</Link>}</h3>
+                    <h3>{isLoginPage ? <Link to="/home" className={isLoginPage ? 'login closeactive' : 'closedesable'}>Cerrar Sesión</Link> : <Link to="/login" className={isLoginPage ? 'login closeactive' : 'closedesable'}>Iniciar Sesión</Link>}</h3>
+
+               
 
                 </div>
             </nav>
