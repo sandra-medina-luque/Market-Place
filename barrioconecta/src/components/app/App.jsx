@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-//import Home from '../../Views/Home';
+import Home from '../../Views/Home';
 import './App.css'
-import ServiceForm from '../serviceForm/ServiceForm';
+//import ServiceForm from '../serviceForm/ServiceForm';
 
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <ServiceForm/>
+      <Home/>
     </>
   );
 }

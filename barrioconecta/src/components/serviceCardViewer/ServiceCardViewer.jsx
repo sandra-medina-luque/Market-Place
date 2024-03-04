@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import UserServiceCard from '../userServiceCard/UserServiceCard';
 import { userService } from '../../../userService';
 import Swal from 'sweetalert2';
+import all from '../../assets/img/all.png'
 import basico from '../../assets/img/basico.png'
 import intermedio from '../../assets/img/intermedio.png'
 import avanzado from '../../assets/img/avanzado.png'
@@ -46,6 +47,7 @@ function ServiceCardViewer({ userServices }) {
                 <div>
                     <h2>Todos</h2>
                     <button className="buttoncategory" onClick={() => handleFilterCategory('all')}>
+                    <img src={all} alt="alllogo" />
                     </button>
                 </div>
                 <div>
@@ -67,7 +69,7 @@ function ServiceCardViewer({ userServices }) {
                 </button>
                 </div>
                 <div>
-                <h2>Certificado</h2>
+                <h2>Certificados</h2>
                 <button className="buttoncategory" onClick={() => handleFilterCategory('certificado')}>
                     <img src={certificado} alt="certificadologo" />
                 </button>

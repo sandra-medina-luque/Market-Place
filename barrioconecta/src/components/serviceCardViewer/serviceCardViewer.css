@@ -1,5 +1,7 @@
 .buttoncategory{
     background-color: rgba(217, 217, 217, 1);
+    width: 160px;
+    height: 150px;
 }
 .filter-buttons{
     display: flex;
