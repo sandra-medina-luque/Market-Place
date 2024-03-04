@@ -6,6 +6,8 @@ import Dashboard from '../../Views/Dashboard';
 import Welcome from '../../Views/Welcome';
 import Footer from '../footer/Footer';
 import './App.css'
+import ServiceForm from '../serviceForm/ServiceForm';
+
 
 function App() {
 
@@ -20,7 +22,7 @@ function App() {
       </Routes>
       <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

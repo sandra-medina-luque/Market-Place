@@ -9,7 +9,7 @@ const apiClient = axios.create({
     }
 });
 
-export const UserService = {
+export const userService = {
 
     async getUser() {
 
@@ -19,20 +19,51 @@ export const UserService = {
         return User
     },
 
-    // async authenticateUser(username, password) {
-       // try {
-          //  const response = await apiClient.post("/user", {
-           //     username,
-           //     password,
-           // });
 
-            // Puedes devolver la respuesta completa o solo los datos necesarios
-           // return response;
-       // } catch (error) {
-            // Manejar errores aquí
-           // throw error;
-       // }
-   // },
+    async createService(newServiceData) {
+        let response = await apiClient.post("/service", newServiceData);
+        let createdService = response.data;
+
+        return createdService;
+    },
+
+    async getServices() {
+
+        let response = await apiClient.get("/service");
+        let Service = response.data;
+
+        return Service;
+    },
+
+    async deleteService(serviceId) {
+        try {
+            await apiClient.delete(`/service/${serviceId}`);
+            console.log(`Servicio con ID ${serviceId} eliminado exitosamente.`);
+        } catch (error) {
+            console.error('Error eliminando servicio:', error);
+            throw error;
+        }
+    },
+
+    async editService(serviceId, updatedServiceData) {
+        try {
+            const response = await apiClient.put(`/service/${serviceId}`, updatedServiceData);
+            console.log(`Servicio con ID ${serviceId} actualizado exitosamente. Respuesta:`, response.data);
+            return response.data;
+        } catch (error) {
+            if (error.response && error.response.status === 404) {
+                console.error(`Error actualizando servicio. El servicio con ID ${serviceId} no se encontró.`);
+            } else {
+                console.error('Error actualizando servicio:', error);
+            }
+            throw error;
+        }
+    },
+
+    
+    
+
+
 };
 
 
