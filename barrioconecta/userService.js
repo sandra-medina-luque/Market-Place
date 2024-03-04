@@ -47,13 +47,21 @@ export const userService = {
 
     async editService(serviceId, updatedServiceData) {
         try {
-            await apiClient.put(`/service/${serviceId}`, updatedServiceData);
-            console.log(`Servicio con ID ${serviceId} actualizado exitosamente.`);
+            const response = await apiClient.put(`/service/${serviceId}`, updatedServiceData);
+            console.log(`Servicio con ID ${serviceId} actualizado exitosamente. Respuesta:`, response.data);
+            return response.data;
         } catch (error) {
-            console.error('Error actualizando servicio:', error);
+            if (error.response && error.response.status === 404) {
+                console.error(`Error actualizando servicio. El servicio con ID ${serviceId} no se encontró.`);
+            } else {
+                console.error('Error actualizando servicio:', error);
+            }
             throw error;
         }
     },
+
+    
+    
 
 
 };

@@ -4,6 +4,10 @@ import '../serviceForm/serviceForm.css'
 import { userService } from "../../../userService"
 import UserServiceCard from "../userServiceCard/UserServiceCard";
 import Swal from 'sweetalert2';
+import teacher from '../../../src/assets/img/teacher.png'
+import editar from '../../assets/img/editar.png'
+import basura from '../../assets/img/basura.png'
+import disquete from '../../assets/img/disquete.png'
 
 function ServiceForm() {
     const [userServices, setUserServices] = useState([]);
@@ -37,6 +41,23 @@ function ServiceForm() {
 
         fetchServices();
     }, []);
+
+    useEffect((deletedServiceId) => {
+        const fetchServices = async () => {
+            try {
+                // Lógica para obtener los servicios solo si deletedServiceId cambia
+                if (deletedServiceId !== null) {
+                    const fetchedServices = await userService.getServices();
+                    setUserServices(fetchedServices);
+                }
+            } catch (error) {
+                console.error('Error al obtener servicios:', error);
+            }
+        };
+
+        fetchServices();
+    }, [deletedServiceId]);
+
 
     const cloudinaryApiUrl = 'https://api.cloudinary.com/v1_1/<dgtkeuzft>/image/upload';
 
@@ -95,106 +116,177 @@ function ServiceForm() {
             }
 
             setService({ name: '', description: '', image: '', price: '', category: '', stock: 0 });
-
+            
             Swal.fire({
                 icon: 'success',
                 title: '¡Éxito!',
                 text: editingService ? 'Se ha actualizado correctamente el servicio.' : 'Se ha creado correctamente el servicio de usuario.',
             });
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
 
         } catch (error) {
             console.error('Error al procesar el servicio:', error);
         }
     };
 
-    const handleDelete = (id) => {
-        setDeletedServiceId(id);
+    const handleDelete = async (id) => {
+        try {
+            // Lógica para eliminar el servicio en el backend
+            await userService.deleteService(id);
+
+            // Actualizar el estado userServices excluyendo el servicio eliminado
+            const updatedServices = userServices.filter((service) => service.id !== id);
+            setUserServices(updatedServices);
+
+            setDeletedServiceId(id);
+            
+        } catch (error) {
+            console.error('Error al eliminar el servicio:', error);
+        }
     };
+
 
     const handleEdit = (id) => {
         const serviceToEdit = userServices.find((service) => service.id === id);
         setEditingService(serviceToEdit);
         setService({ ...serviceToEdit, image: serviceToEdit.image }); // Set the image as a string to indicate it's not a new image
+        
     };
 
-    const handleSubmitEdit = async (e) => {
-        e.preventDefault();
 
-        try {
-            await userService.editService(editingService.id, editingService);
-            console.log(`Servicio con ID ${editingService.id} actualizado exitosamente en el servidor.`);
 
-            const updatedServices = userServices.map((service) =>
-                service.id === editingService.id ? editingService : service
-            );
-            setUserServices(updatedServices);
 
-            setEditingService(null);
-        } catch (error) {
-            console.error('Error actualizando servicio en el servidor:', error);
-        }
-    };
+
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <div {...getRootProps()}>
-                    <input {...getInputProps()} />
-                    {isDragActive ? (<p> Drop the files here...</p>) : (<p>Drag 'n' drop some files here, or click to select files</p>)}
-                </div>
-                {service.image && <img src={typeof service.image === 'string' ? service.image : URL.createObjectURL(service.image)} alt="" style={{ width: '300px', height: '300px' }} />}
-                <label htmlFor="name">Nombre:</label>
-                <input
-                    type="text"
-                    id="name"
-                    value={service.name}
-                    onChange={(e) => setService({ ...service, name: e.target.value })}
-                />
-                <label htmlFor="description">Descripción:</label>
-                <textarea
-                    id="description"
-                    value={service.description}
-                    onChange={(e) => setService({ ...service, description: e.target.value })}
-                />
-                <label htmlFor="price">Precio (€/hora):</label>
-                <input
-                    type="number"
-                    id="price"
-                    value={service.price}
-                    onChange={(e) => setService({ ...service, price: e.target.value })}
-                />
-                <label htmlFor="category">Categoría:</label>
-                <select
-                    id="category"
-                    value={service.category}
-                    onChange={(e) => setService({ ...service, category: e.target.value })}
-                >
-                    <option value="Basico">Básico</option>
-                    <option value="Medio">Medio</option>
-                    <option value="Avanzado">Avanzado</option>
-                    <option value="Certificado">Certificado</option>
-                </select>
-                <label htmlFor="stock">Stock:</label>
-                <input
-                    type="number"
-                    id="stock"
-                    value={service.stock}
-                    onChange={(e) => setService({ ...service, stock: parseInt(e.target.value, 10) })}
-                />
-                <button type="submit">{editingService ? 'Guardar cambios' : 'Crear servicio'}</button>
-            </form>
-            
+            <div className="cont">
+                <form className="adminform">
+                    <div className="contentform">
+                        <h2>Perfil de Usuario</h2>
+                        <div className="formoption">
+                            <img className="imgusur" src={teacher} alt="imgusur" />
+                            <div className="iconsusur">
+                                <img src={editar} alt="editicon" />
+                                <img src={disquete} alt="disqueteicon" />
+                                <img src={basura} alt="basuraicon" />
+                            </div>
+                        </div>
+                        <div className="formuser">
+                            <div className="userdescription">
+                                <label className="descripuser" >Descripción:</label>
+                                <textarea className="descriptioninput" />
+                            </div>
+                            <div className="icondescrip">
+                                <img src={editar} alt="editicon" />
+                                <img src={disquete} alt="disqueteicon" />
+                                <img src={basura} alt="basuraicon" />
+                            </div>
+                        </div>
+                        <div className="tlfuser">
+                            <label className="tlf"  >Teléfono:</label>
+                            <div className="number">
+                                <input type="number" />
+                                <img src={editar} alt="editicon" />
+                                <img src={disquete} alt="disqueteicon" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form >
+
+                <form className="adminform" onSubmit={handleSubmit}>
+                    <div className="contentform">
+                        <h2>Agregar Productos</h2>
+                        <div className="formoption" {...getRootProps()}>
+                            <label className="fileform" htmlFor="name">Selecciona imagen:</label>
+                            <div style={{ position: 'relative', width: '300px', height: '300px', border: '2px dashed #000', backgroundColor: '#fff' }}>
+                                <input {...getInputProps({ style: { width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, opacity: 0 } })} />
+                                {service.image && (
+                                    <img
+                                        src={typeof service.image === 'string' ? service.image : URL.createObjectURL(service.image)}
+                                        alt=""
+                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                    />
+                                )}
+                                {isDragActive ? (<p style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>Drop the files here...</p>) : null}
+                            </div>
+                        </div>
+
+
+                        <div className="formoption">
+                            <label className="nameform" htmlFor="name">Nombre:</label>
+                            <input
+                                type="text"
+                                id="name"
+                                value={service.name}
+                                onChange={(e) => setService({ ...service, name: e.target.value })}
+                            />
+                        </div>
+                        <div className="formoption">
+                            <label className="descriptionform" htmlFor="description">Descripción:</label>
+                            <textarea
+                                id="description"
+                                value={service.description}
+                                onChange={(e) => setService({ ...service, description: e.target.value })}
+                            />
+                        </div>
+                        <div className="formoption">
+                            <label className="priceform" htmlFor="price">Precio (€/hora):</label>
+                            <input
+                                type="number"
+                                id="price"
+                                value={service.price}
+                                onChange={(e) => setService({ ...service, price: e.target.value })}
+                            />
+                        </div>
+                        <div className="formoption">
+                            <label className="categoryform" htmlFor="category">Categoría:</label>
+                            <select
+                                id="category"
+                                value={service.category}
+                                onChange={(e) => setService({ ...service, category: e.target.value })}
+                            >
+                                <option value="Basico">Básico</option>
+                                <option value="Medio">Medio</option>
+                                <option value="Avanzado">Avanzado</option>
+                                <option value="Certificado">Certificado</option>
+                            </select>
+                        </div>
+                        <div className="formoption">
+                            <label className="stockform" htmlFor="stock">Stock: (Horas)</label>
+                            <input
+                                type="number"
+                                id="stock"
+                                value={service.stock}
+                                onChange={(e) => setService({ ...service, stock: parseInt(e.target.value, 10) })}
+                            />
+                        </div>
+                        <div className="formbutton">
+                            <button className="adminbutton" type="submit">{editingService ? 'Guardar cambios' : 'Agregar'}</button>
+                        </div>
+                    </div>
+                </form>
+            </div >
+
             <div className="row">
-                {userServices.filter((service) => service.id !== deletedServiceId).map((createdService) => (
-                    <UserServiceCard
-                        key={createdService.id}
-                        userService={createdService}
-                        imageUrl={createdService.image}
-                        onDelete={handleDelete}
-                        onEdit={handleEdit}
-                    />
-                ))}
+                {userServices
+                    .filter((service) => service.id !== deletedServiceId)
+                    .map((createdService) => (
+                        <UserServiceCard
+                            key={createdService.id}
+                            userService={createdService}
+                            imageUrl={createdService.image}
+                            onDelete={() => handleDelete(createdService.id)}
+                            onEdit={() => handleEdit(createdService.id)}
+                        />
+                    ))}
+
             </div>
+
         </>
     );
 }

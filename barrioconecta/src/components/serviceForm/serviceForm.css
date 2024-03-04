@@ -1,0 +1,136 @@
+
+.cont{
+    display: flex;
+    justify-content: space-between;
+}
+.adminform{
+    display: flex;
+    flex-direction: column;
+    background-color:rgba(217, 217, 217, 1);
+    width: 500px;
+    height: 800px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 15px;
+    margin-bottom: 40px;
+}
+
+.contentform{
+    margin-top: 20px;
+}
+
+.formoption{
+    display: flex;
+    margin-top: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-right: 70px;
+  
+}
+
+.imgusur{
+    width: 320px;
+
+}
+
+.formuser{
+    display: flex;
+    margin-top: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    justify-content: space-between;
+    
+    
+}
+
+.userdescription{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    justify-content: space-between;
+    margin-left: 30px;
+    
+}
+
+.descripuser{
+    margin-left: -180px;
+}
+
+.descriptioninput{
+    width: 320px;
+    height: 200px;
+}
+
+.icondescrip{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 72px;
+    margin-top: 50px;
+}
+
+.iconsusur{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 6px;
+    width: 35px;
+    height: 220px;
+}
+
+.tlfuser{
+   display: flex;
+   flex-direction: column;
+   font-family: 'Montserrat', sans-serif;
+   font-size: 25px;
+   margin-right: 60px;
+   margin-left: 30px;
+   margin-top: 20px;
+}
+
+.tlf{
+    margin-right: 300px;
+}
+
+.number{
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+    
+}
+
+.fileform{
+    margin-left: -30px;
+}
+
+input{
+    border-radius: 10px;
+    border: none;
+  
+}
+
+
+
+textarea{
+    border-radius: 10px;
+    width: 225px;
+    border: none;
+}
+
+select{
+    width: 225px;
+}
+
+.adminbutton{
+    width: 100px;
+    background-color: rgba(2, 193, 44, 1);
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    border-radius: 40px;
+    margin-top: 30px;
+}
+

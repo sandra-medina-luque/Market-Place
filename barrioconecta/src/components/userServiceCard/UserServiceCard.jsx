@@ -1,6 +1,8 @@
 import React from 'react';
 import { userService } from '../../../userService';
 import '../userServiceCard/userServiceCard.css'
+import basura from '../../assets/img/basura.png'
+import editar from'../../assets/img/editar.png'
 
 const UserServiceCard = ({ userService, imageUrl, onDelete, onEdit}) => {
   return (
@@ -14,10 +16,14 @@ const UserServiceCard = ({ userService, imageUrl, onDelete, onEdit}) => {
           <p className="card-text">{userService.category}</p>
           <p className="card-text">Stock: {userService.stock} horas</p>
         </div>
+        <div className='buttons'>
         <button onClick={() => onDelete(userService.id)}>
-          Eliminar
+         <img src={basura} alt="" />
         </button>
-        <button onClick={() => onEdit(userService.id)}>Editar</button>
+        <button onClick={() => onEdit(userService.id)}>
+          <img src={editar} alt="" />
+        </button>
+        </div>
       </div>
 
     </div>
