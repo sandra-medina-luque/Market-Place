@@ -1,5 +1,7 @@
 .buttoncategory{
     background-color: rgba(217, 217, 217, 1);
+   display: flex;
+justify-content: space-between;
     width: 160px;
     height: 150px;
 }
@@ -7,4 +9,23 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
+}
+
+@media screen and (max-width: 834px) {
+    .buttoncategory{
+        background-color: rgba(217, 217, 217, 1);
+        width: 140px;
+        height: 150px;
+    }
+
+}
+@media screen and (max-width:390px) {
+    .filter-buttons{
+        display: flex;
+        flex-direction: column;
+    }
+    .buttoncategory{
+        margin: auto;
+    }
+
 }
