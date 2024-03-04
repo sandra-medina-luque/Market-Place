@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import "./log.css"
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserService } from "../../../userService";
-import Swal from 'sweetalert2';
+import "./log.css"
 
 
 function Log() {
@@ -35,6 +35,7 @@ function Log() {
             showConfirmButton: false,
             timer: 1500 // Mostrar durante 1.5 segundos antes de cerrarse automáticamente
           });
+
         } else {
           // Autenticación fallida
           Swal.fire({
@@ -55,7 +56,8 @@ function Log() {
 
   return (
     <>
-      <body className="logcont">
+
+      <div className="logcont">
         <section className="logform">
           <div className="mb-3">
             <label htmlFor="formGroupInput" className="form-label">
@@ -82,8 +84,10 @@ function Log() {
             />
           </div>
         </section>
-        <button className="logbutton" onClick={handleLogin}>Conectar</button>
-      </body>
+        <Link to="/dashboard">
+          <button className="logbutton" onClick={handleLogin}>Conectar</button>
+        </Link>
+      </div>
     </>
   );
 }
