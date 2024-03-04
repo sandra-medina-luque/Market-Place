@@ -1,13 +1,14 @@
 import React from 'react'
 import Navbar2 from '../components/navbar2/Navbar2'
 import Footer from '../components/footer/Footer';
+import ServiceForm from '../components/serviceForm/ServiceForm';
 
 
 const Dashboard = () => {
     return (
         <>
             <Navbar2 />
-            <h1>Acá va el Dashboard</h1>
+            <ServiceForm/>
             <Footer />
         </>
     );

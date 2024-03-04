@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { UserService } from "../../../userService";
+import { userService} from '../../../userService'
 import "./log.css"
 
 
@@ -11,7 +11,7 @@ function Log() {
   const [userData, setUserData] = useState(null);
 
   async function getData() {
-    let user = await UserService.getUser();
+    let user = await userService.getUser();
     console.log("Usuario obtenido:", user);
     setUserData(userData);
   }

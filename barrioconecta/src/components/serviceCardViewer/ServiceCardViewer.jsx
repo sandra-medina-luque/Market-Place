@@ -2,7 +2,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import UserServiceCard from '../userServiceCard/UserServiceCard';
-import { userService } from '../../../userService';
 import Swal from 'sweetalert2';
 import all from '../../assets/img/all.png'
 import basico from '../../assets/img/basico.png'
