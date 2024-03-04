@@ -55,7 +55,7 @@ img:hover {
 @media screen and (max-width: 1180px) {
     .footer {
         flex-direction: column;
-        height: 150px;
+        height: 170px;
         padding-top: 30px;
         padding-bottom: 30px;
     }
@@ -100,9 +100,15 @@ img:hover {
     }
 }
 
-@media screen and (max-width: 530px){
+@media screen and (max-width: 610px){
     .footer{
         height: 220px;
+    }
+}
+
+@media screen and (max-width: 530px){
+    .footer{
+        height: 245px;
     }
 }
 
