@@ -2,9 +2,10 @@ import React from 'react';
 import { userService } from '../../../userService';
 import '../userServiceCard/userServiceCard.css'
 import basura from '../../assets/img/basura.png'
-import editar from'../../assets/img/editar.png'
+import editar from '../../assets/img/editar.png'
+import reserva from '../../assets/img/Reserva.png'
 
-const UserServiceCard = ({ userService, imageUrl, onDelete, onEdit}) => {
+const UserServiceCard = ({ userService, imageUrl, onDelete, onEdit, modoEdicion, onDecrementStock }) => {
   return (
     <div className="col-md-4 mb-4">
       <div className="card h-100">
@@ -16,14 +17,24 @@ const UserServiceCard = ({ userService, imageUrl, onDelete, onEdit}) => {
           <p className="card-text">{userService.category}</p>
           <p className="card-text">Stock: {userService.stock} horas</p>
         </div>
-        <div className='buttons'>
-        <button onClick={() => onDelete(userService.id)}>
-         <img src={basura} alt="" />
-        </button>
-        <button onClick={() => onEdit(userService.id)}>
-          <img src={editar} alt="" />
-        </button>
-        </div>
+        {modoEdicion && (
+          <div className='buttons'>
+            <button onClick={() => onDelete(userService.id)}>
+              <img src={basura} alt="basuralog" />
+            </button>
+            <button onClick={() => onEdit(userService.id)}>
+              <img src={editar} alt="editlogo" />
+            </button>
+          </div>
+        )}
+        {!modoEdicion && (
+          <div className="buttons">
+            <button onClick={typeof onDecrementStock === 'function' ? onDecrementStock : () => { }}>
+              <img src={reserva} alt="reserlog" />
+            </button>
+
+          </div>
+        )}
       </div>
 
     </div>

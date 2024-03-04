@@ -141,6 +141,11 @@ function ServiceForm() {
             setUserServices(updatedServices);
 
             setDeletedServiceId(id);
+            Swal.fire({
+                icon: 'success',
+                title: 'Eliminado',
+                text: 'Eliminado correctamente',
+            });
             
         } catch (error) {
             console.error('Error al eliminar el servicio:', error);
@@ -156,7 +161,7 @@ function ServiceForm() {
     };
 
 
-
+    
 
 
 
@@ -280,8 +285,10 @@ function ServiceForm() {
                             key={createdService.id}
                             userService={createdService}
                             imageUrl={createdService.image}
+                            modoEdicion={true} 
                             onDelete={() => handleDelete(createdService.id)}
                             onEdit={() => handleEdit(createdService.id)}
+                            onDecrementStock={true}
                         />
                     ))}
 
