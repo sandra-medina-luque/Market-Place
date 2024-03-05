@@ -5,9 +5,9 @@ import { userService } from "../../../userService"
 import UserServiceCard from "../userServiceCard/UserServiceCard";
 import Swal from 'sweetalert2';
 import teacher from '../../../src/assets/img/teacher.png'
-import editar from '../../assets/img/editar.png'
-import basura from '../../assets/img/basura.png'
-import disquete from '../../assets/img/disquete.png'
+import edit from '../../assets/img/edit.png'
+import trash from '../../assets/img/trash.png'
+import disk from '../../assets/img/disk.png'
 
 function ServiceForm() {
     const [userServices, setUserServices] = useState([]);
@@ -171,9 +171,9 @@ function ServiceForm() {
                         <div className="formoption">
                             <img className="imgusur" src={teacher} alt="imgusur" />
                             <div className="iconsusur">
-                                <img src={editar} alt="editicon" />
-                                <img src={disquete} alt="disqueteicon" />
-                                <img src={basura} alt="basuraicon" />
+                                <img src={edit} alt="editicon" />
+                                <img src={disk} alt="disqueteicon" />
+                                <img src={trash} alt="basuraicon" />
                             </div>
                         </div>
                         <div className="formuser">
@@ -182,17 +182,17 @@ function ServiceForm() {
                                 <textarea className="descriptioninput" />
                             </div>
                             <div className="icondescrip">
-                                <img src={editar} alt="editicon" />
-                                <img src={disquete} alt="disqueteicon" />
-                                <img src={basura} alt="basuraicon" />
+                                <img src={edit} alt="editicon" />
+                                <img src={disk} alt="disqueteicon" />
+                                <img src={trash} alt="basuraicon" />
                             </div>
                         </div>
                         <div className="tlfuser">
                             <label className="tlf"  >Teléfono:</label>
                             <div className="number">
                                 <input className="tlfnumber" type="number" />
-                                <img src={editar} alt="editicon" />
-                                <img src={disquete} alt="disqueteicon" />
+                                <img src={edit} alt="editicon" />
+                                <img src={disk} alt="disqueteicon" />
                             </div>
 
                         </div>
@@ -282,7 +282,7 @@ function ServiceForm() {
                             key={createdService.id}
                             userService={createdService}
                             imageUrl={createdService.image}
-                            modoEdicion={true} 
+                            editingMode={true} 
                             onDelete={() => handleDelete(createdService.id)}
                             onEdit={() => handleEdit(createdService.id)}
                             onDecrementStock={true}

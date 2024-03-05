@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import UserServiceCard from '../userServiceCard/UserServiceCard';
 import Swal from 'sweetalert2';
 import all from '../../assets/img/all.png'
-import basico from '../../assets/img/basico.png'
-import intermedio from '../../assets/img/intermedio.png'
-import avanzado from '../../assets/img/avanzado.png'
-import certificado from '../../assets/img/certificado.png'
+import basic from '../../assets/img/basic.png'
+import intermediate from '../../assets/img/intermediate.png'
+import advanced from '../../assets/img/advanced.png'
+import certificate from '../../assets/img/certificate.png'
 import '../serviceCardViewer/serviceCardViewer.css'
-import reserva from '../../assets/img/Reserva.png'
+import booking from '../../assets/img/booking.png'
 
 
 function ServiceCardViewer({ userServices }) {
@@ -63,25 +63,25 @@ function ServiceCardViewer({ userServices }) {
                 <div>
                     <h2>Básico</h2>
                     <button className="buttoncategory" onClick={() => handleFilterCategory('básico')}>
-                        <img src={basico} alt="basicologo" />
+                        <img src={basic} alt="basicologo" />
                     </button>
                 </div>
                 <div>
                     <h2>Medio</h2>
                     <button className="buttoncategory" onClick={() => handleFilterCategory('medio')}>
-                        <img src={intermedio} alt="intermediologo" />
+                        <img src={intermediate} alt="intermediologo" />
                     </button>
                 </div>
                 <div>
                     <h2>Avanzado</h2>
                     <button className="buttoncategory" onClick={() => handleFilterCategory('avanzado')}>
-                        <img src={avanzado} alt="avanzadologo" />
+                        <img src={advanced} alt="avanzadologo" />
                     </button>
                 </div>
                 <div>
                     <h2>Certificados</h2>
                     <button className="buttoncategory" onClick={() => handleFilterCategory('certificado')}>
-                        <img src={certificado} alt="certificadologo" />
+                        <img src={certificate} alt="certificadologo" />
                     </button>
                 </div>
             </div>
@@ -108,7 +108,7 @@ function ServiceCardViewer({ userServices }) {
                     <p>Categoría: {selectedService.category}</p>
                     <p>Stock: {selectedService.stock} horas</p>
                     <button onClick={() => handleDecrementStock(selectedService.id)}>
-                        <img src={reserva} alt="reserlog" />
+                        <img src={booking} alt="reserlog" />
                     </button>
                     <button onClick={closeDetailView}>Cerrar Detalles</button>
                 </div>

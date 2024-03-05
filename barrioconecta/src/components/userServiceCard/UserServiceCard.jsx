@@ -1,11 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import '../userServiceCard/userServiceCard.css'
-import basura from '../../assets/img/basura.png'
-import editar from '../../assets/img/editar.png'
-import reserva from '../../assets/img/Reserva.png'
+import trash from '../../assets/img/trash.png'
+import edit from '../../assets/img/edit.png'
+import booking from '../../assets/img/booking.png'
 
-const UserServiceCard = ({ userService, imageUrl, onDelete, onEdit, modoEdicion, onDecrementStock, onCardClick}) => {
+const UserServiceCard = ({ userService, imageUrl, onDelete, onEdit, editingMode, onDecrementStock, onCardClick}) => {
   const [showDetails, setShowDetails] = useState(false);
 
   const handleCardClick = () => {
@@ -28,20 +28,20 @@ const UserServiceCard = ({ userService, imageUrl, onDelete, onEdit, modoEdicion,
           <p className="text-center">{userService.category}</p>
           <p className="text-center">Stock: {userService.stock} horas</p>
         </div>
-        {modoEdicion && (
+        {editingMode && (
           <div className='buttons'>
             <button className='buttons' onClick={(e) => { e.stopPropagation(); onDelete(userService.id); }}>
-              <img src={basura} alt="basuralog" />
+              <img src={trash} alt="basuralog" />
             </button>
             <button className='buttons' onClick={(e) => { e.stopPropagation(); onEdit(userService.id); }}>
-              <img src={editar} alt="editlogo" />
+              <img src={edit} alt="editlogo" />
             </button>
           </div>
         )}
-        {!modoEdicion && (
+        {!editingMode && (
           <div className="buttons">
             <button className='buttons' onClick={(e) => { e.stopPropagation(); typeof onDecrementStock === 'function' && onDecrementStock(); }}>
-              <img src={reserva} alt="reserlog" />
+              <img src={booking} alt="reserlog" />
             </button>
           </div>
         )}

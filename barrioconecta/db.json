@@ -44,13 +44,13 @@
       "stock": "3"
     },
     {
-      "id": "6",
       "name": "Inglés",
       "description": "Perfecciona tu dominio del inglés. Trabaja en la fluidez, la pronunciación precisa y la comprensión de textos más avanzados, además de desarrollar habilidades de escritura más elaboradas.",
       "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709283880/cwiukjzd4mird5mvkqdn.jpg",
       "price": "25",
       "category": "Avanzado",
-      "stock": "3"
+      "stock": "3",
+      "id": "6"
     },
     {
       "id": "7",
