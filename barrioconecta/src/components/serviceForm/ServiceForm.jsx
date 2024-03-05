@@ -130,10 +130,10 @@ function ServiceForm() {
 
     const handleDelete = async (id) => {
         try {
-            // Lógica para eliminar el servicio en el backend
+            
             await userService.deleteService(id);
 
-            // Actualizar el estado userServices excluyendo el servicio eliminado
+            
             const updatedServices = userServices.filter((service) => service.id !== id);
             setUserServices(updatedServices);
 
@@ -153,7 +153,7 @@ function ServiceForm() {
     const handleEdit = (id) => {
         const serviceToEdit = userServices.find((service) => service.id === id);
         setEditingService(serviceToEdit);
-        setService({ ...serviceToEdit, image: serviceToEdit.image }); // Set the image as a string to indicate it's not a new image
+        setService({ ...serviceToEdit, image: serviceToEdit.image }); 
         
     };
 
