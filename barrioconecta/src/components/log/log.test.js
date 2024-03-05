@@ -6,7 +6,6 @@ import { BrowserRouter } from 'react-router-dom';
 import Log from './Log.jsx';
 
 
-// Mockeo navigate
 const mockedUseNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom'),
@@ -43,15 +42,14 @@ describe("<Log/>", () => {
                 <Log />
             </BrowserRouter>
         );
-
-        // Simula la entrada del usuario 
+ 
         const inputUsuario = screen.getByRole('textbox', { name: /Usuario:/i });
         const inputContraseña = screen.getByLabelText(/Contraseña:/i);
 
         fireEvent.change(inputUsuario, { target: { value: 'Gaby' } });
         fireEvent.change(inputContraseña, { target: { value: 'barrioconecta' } });
 
-        // Simula clic en el botón
+        
         const button = screen.getByText(/Conectar/i);
         fireEvent.click(button);
 
