@@ -170,7 +170,7 @@ function ServiceForm() {
             <div className="cont">
                 <form className="adminform">
                     <div className="contentform">
-                        <h2>Perfil de Usuario</h2>
+                        <h2 className="titleform">Perfil de Usuario</h2>
                         <div className="formoption">
                             <img className="imgusur" src={teacher} alt="imgusur" />
                             <div className="iconsusur">
@@ -193,7 +193,7 @@ function ServiceForm() {
                         <div className="tlfuser">
                             <label className="tlf"  >Teléfono:</label>
                             <div className="number">
-                                <input type="number" />
+                                <input className="tlfnumber" type="number" />
                                 <img src={editar} alt="editicon" />
                                 <img src={disquete} alt="disqueteicon" />
                             </div>
@@ -205,7 +205,7 @@ function ServiceForm() {
 
                 <form className="adminform" onSubmit={handleSubmit}>
                     <div className="contentform">
-                        <h2>Agregar Productos</h2>
+                        <h2 className="titleform">Agregar Productos</h2>
                         <div className="formoption" {...getRootProps()}>
                             <label className="fileform" htmlFor="name">Selecciona imagen:</label>
                             <div style={{ position: 'relative', width: '300px', height: '300px', border: '2px dashed #000', backgroundColor: '#fff' }}>

@@ -3,4 +3,7 @@
 .buttons{
     display: flex;
     margin: auto;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 10px;
 }

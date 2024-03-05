@@ -1,7 +1,7 @@
 
 .cont{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 .adminform{
     display: flex;
@@ -13,10 +13,17 @@
     font-family: 'Montserrat', sans-serif;
     margin-top: 15px;
     margin-bottom: 40px;
+    margin-left: 80px;
+    margin-right: 80px;
 }
 
 .contentform{
     margin-top: 20px;
+    
+}
+
+.titleform{
+    margin-left: 120px;
 }
 
 .formoption{
@@ -56,9 +63,7 @@
     
 }
 
-.descripuser{
-    margin-left: -180px;
-}
+
 
 .descriptioninput{
     width: 320px;
@@ -92,9 +97,7 @@
    margin-top: 20px;
 }
 
-.tlf{
-    margin-right: 300px;
-}
+
 
 .number{
     display: flex;
@@ -103,13 +106,11 @@
     
 }
 
-.fileform{
-    margin-left: -30px;
-}
 
-input{
+#price, #category, #name, #stock, .tlfnumber {
     border-radius: 10px;
     border: none;
+    width: 280px;
   
 }
 
@@ -117,7 +118,7 @@ input{
 
 textarea{
     border-radius: 10px;
-    width: 225px;
+    width: 280px;
     border: none;
 }
 
@@ -127,11 +128,19 @@ select{
 
 .adminbutton{
     width: 100px;
+    height: 50px;
     background-color: rgba(2, 193, 44, 1);
     font-family: 'Montserrat', sans-serif;
     color: white;
     border-radius: 40px;
-    margin-top: 30px;
+    border: none;
+  margin-left: 200px;
+  margin-top: -10px;
+    
+}
+
+.row{
+    justify-content: center;
 }
 
 @media screen and (max-width: 834px) {
