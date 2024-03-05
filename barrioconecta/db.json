@@ -71,13 +71,13 @@
       "stock": "3"
     },
     {
-      "id": "9",
       "name": "Inglés",
       "description": "Prepárate para obtener reconocimiento internacional en tu dominio del inglés con los exámenes de Cambridge. Estos cursos te preparan para los exámenes de diferentes niveles demostrando tu habilidad lingüística en situaciones reales.",
       "image": "https://res.cloudinary.com/dgtkeuzft/image/upload/v1709283159/oaq788vnaevljodnoehe.jpg",
       "price": "30",
       "category": "Certificado",
-      "stock": "3"
+      "stock": "3",
+      "id": "9"
     },
     {
       "id": "10",
