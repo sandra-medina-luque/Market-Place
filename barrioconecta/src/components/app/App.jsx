@@ -6,12 +6,7 @@ import Dashboard from '../../Views/Dashboard';
 import WelcomeView from '../../Views/WelcomeView'
 
 import './App.css'
-<<<<<<< HEAD
-import ServiceForm from '../serviceForm/ServiceForm';
-
-=======
 import Error404 from '../../Views/Error404';
->>>>>>> feature/navbar
 
 function App() {
 
