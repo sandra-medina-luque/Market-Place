@@ -14,14 +14,11 @@
     "@cloudinary/react": "^1.13.0",
     "@cloudinary/url-gen": "^1.18.0",
     "axios": "^1.6.7",
-<<<<<<< HEAD
     "cloudinary": "^2.0.1",
     "cloudinary-core": "^2.13.0",
     "cloudinary-react": "^1.8.1",
     "crypto-js": "^4.2.0",
-=======
     "history": "^5.3.0",
->>>>>>> feature/navbar
     "json-server": "^1.0.0-alpha.23",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
