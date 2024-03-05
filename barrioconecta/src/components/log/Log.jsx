@@ -65,22 +65,24 @@ function Log() {
       <div className="logcont">
         <section className="logform">
           <div className="mb-3">
-            <label htmlFor="formGroupInput" className="form-label">
+          <label htmlFor="name" className="form-label">
               Usuario:
             </label>
             <input
               type="text"
               name="userName"
+              id="name"
               className="form-control"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="formGroupInput" className="form-label">
+          <label htmlFor="password" className="form-label">
               Contraseña:
             </label>
             <input
+              id="password"
               type="password"
               name="password"
               className="form-control"

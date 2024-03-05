@@ -224,7 +224,7 @@ function ServiceForm() {
 
                         <div className="formoption">
                             <label className="nameform" htmlFor="name">Nombre:</label>
-                            <input
+                            <input className="inputFormotion"
                                 type="text"
                                 id="name"
                                 value={service.name}

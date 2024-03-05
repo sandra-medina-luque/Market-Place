@@ -107,7 +107,7 @@
 }
 
 
-#price, #category, #name, #stock, .tlfnumber {
+#price, #category, .inputFormotion, #stock, .tlfnumber {
     border-radius: 10px;
     border: none;
     width: 280px;
