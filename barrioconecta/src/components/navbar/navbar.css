@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 nav {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
@@ -22,7 +21,6 @@ nav {
 .login {
     display: flex;
     align-items: center;
-
 }
 
 .arrow-icon {
@@ -31,6 +29,7 @@ nav {
 
 .iconHolder {
     margin-right: 30px;
+    color: black;
 }
 
 .servicios {
@@ -46,7 +45,7 @@ nav {
     transition: transform 0.5s ease-in-out;
 }
 
-input:focus {
+.inputSearch:focus {
     background-color: #FEE846;
     border: #0B736A;
 }
@@ -75,14 +74,12 @@ a {
     padding: 20px;
 }
 
-
 .menuOpen .link:not(.active):hover {
     color: none;
     font-size: 20px;
 }
 
-
-input {
+.inputSearch {
     width: 400px;
     height: 30px;
     font-size: 20px;
@@ -92,7 +89,7 @@ input {
     border-radius: 20px;
 }
 
-input:focus {
+.inputSearch:focus {
     border-color: #FEE846;
 }
 
@@ -117,15 +114,23 @@ input:focus {
     border-radius: 5px;
 }
 
-.closeactive, .closedesable{
-    color:#D9D9D9;
-}
-
 .closeactive:hover, .closedesable:hover{
     color:#FEE846;
 }
 
+.closedesable {
+    margin-left: 4px;
+}
 
+.iconHolder h3{
+    margin-left:20px;
+} 
+
+@media screen and (max-width: 1010px){
+    .inputSearch{
+        width: 350px;
+    }
+}
 
 @media screen and (max-width: 950px){
 
@@ -156,11 +161,11 @@ input:focus {
         transition: max-height 0.5s ease;
         position: fixed;
         top: 100px;
-        background-color:#D9D9D9;
+        background-color:#7B8887;
         color:#0B736A;
         border-radius: 10px;
         width: 200px;
-        height: 100px;
+        height: 130px;
         z-index: 2;
     }
 
@@ -168,7 +173,6 @@ input:focus {
         font-size: 20px;
         padding: 10px;
     }
-
 
     .menuOpen .iconHolder {
         display: flex;
@@ -228,7 +232,7 @@ input:focus {
 .searchContainer{
     margin-left: 200px;
 }
-}
+
 
 .link:hover, .active {
     color:#FEE846;
@@ -237,22 +241,28 @@ input:focus {
 .menuOpen .link:not(.active):hover  {
     color: none;
 }
-
-@media screen and (max-width: 950px){
-    .searchContainer{
-        margin-left: 150px;
-    }
+.searchContainer{
+    margin-left: 150px;
 }
 
-@media screen and (max-width: 600px){
-    input{
-        width: 200px;
+}
+
+
+@media screen and (max-width: 590px){
+    .inputSearch{
+        width: 270px;
     }
 }
 
 @media (hover: none) {
     .link:hover {
         color: inherit;
+    }
+}
+
+@media screen and (max-width: 470px){
+    .inputSearch{
+        width: 190px;
     }
 }
 
@@ -266,5 +276,11 @@ input:focus {
 
     nav{
         height: 100px;
+    }
+}
+
+@media screen and (max-width: 390px){
+    #logo{
+        left:25px;
     }
 }

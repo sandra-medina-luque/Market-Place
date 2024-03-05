@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import { userService} from '../../../userService'
 import "./log.css"
+=======
+import { UserService } from "../../../userService";
+import "./log.css";
+>>>>>>> feature/navbar
 
 
 function Log() {
@@ -60,11 +65,12 @@ function Log() {
       <div className="logcont">
         <section className="logform">
           <div className="mb-3">
-            <label htmlFor="formGroupInput" className="form-label">
+            <label htmlFor="name" className="form-label">
               Usuario:
             </label>
             <input
               type="text"
+              id="name"
               name="userName"
               className="form-control"
               value={username}
@@ -72,10 +78,11 @@ function Log() {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="formGroupInput" className="form-label">
+            <label htmlFor="password" className="form-label">
               Contraseña:
             </label>
             <input
+              id="password"
               type="password"
               name="password"
               className="form-control"
@@ -85,7 +92,7 @@ function Log() {
           </div>
         </section>
         <Link to="/dashboard">
-          <button className="logbutton" onClick={handleLogin}>Conectar</button>
+          <button id="button" className="logbutton" onClick={handleLogin}>Conectar</button>
         </Link>
       </div>
     </>

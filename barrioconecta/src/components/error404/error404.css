@@ -1,0 +1,9 @@
+
+.error{ text-align: center;}
+
+@media screen and (max-width: 500px) {
+    .gifError{
+        width: 390px;
+    height:350px;
+    }
+}

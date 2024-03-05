@@ -73,3 +73,44 @@
     border: none;
 }
 
+@media screen and (max-width: 990px){
+    .logform{
+        width: 500px;
+    }
+    .logcont{
+        margin-left: 20%;
+    }
+}
+
+@media screen and (max-width: 690px){
+    .logform{
+        width: 400px;
+    }
+    .logcont{
+        margin-left: 15%;
+    }
+    }
+
+    @media screen and (max-width: 690px){
+        .logform{
+            width: 400px;
+        }
+
+        .mb-3, .mb-4{
+            flex-direction: column;
+        }
+    }
+
+    @media screen and (max-width: 569px){
+        .logform{
+            width: 350px;
+        }
+    }
+    @media screen and (max-width: 490px){
+        .logform{
+            width: 300px;
+        }
+        .logcont{
+            margin-left: 10%;
+        }
+    }

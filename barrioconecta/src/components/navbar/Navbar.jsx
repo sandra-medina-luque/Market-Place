@@ -57,7 +57,7 @@ function Navbar() {
   
                 <div className="searchContainer">
                     <form onSubmit={handleSearchSubmit}>
-                        <input
+                        <input className='inputSearch'
                             type="text"
                             placeholder="&#128269; Buscar"
                             value={searchQuery}
@@ -73,13 +73,13 @@ function Navbar() {
                         {desplegableVisible && (
                             <div className="dropdownContent">
                                 <Link to="/servicio1">Inglés</Link>
-                                <Link to="/servicio2">Física</Link>
+                                <Link to="/error404">Física</Link>
                                 <Link to="/servicio3">Matemáticas</Link>
                             </div>
                         )}
                     </div>
 
-                    <h3>{isLoginPage ? <Link to="/home" className={isLoginPage ? 'login closeactive' : 'closedesable'}>Cerrar Sesión</Link> : <Link to="/login" className={isLoginPage ? 'login closeactive' : 'closedesable'}>Iniciar Sesión</Link>}</h3>
+                    <h3 id='loginButton'>{isLoginPage ? <Link to="/home" className={isLoginPage ? 'login closeactive' : 'closedesable'}>Cerrar Sesión</Link> : <Link to="/login" className={isLoginPage ? 'login closeactive' : 'closedesable'}>Iniciar Sesión</Link>}</h3>
 
                
 
