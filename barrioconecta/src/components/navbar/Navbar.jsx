@@ -73,7 +73,7 @@ function Navbar() {
                         {desplegableVisible && (
                             <div className="dropdownContent">
                                 <Link to="/servicio1">Inglés</Link>
-                                <Link to="/servicio2">Física</Link>
+                                <Link to="/error404">Física</Link>
                                 <Link to="/servicio3">Matemáticas</Link>
                             </div>
                         )}

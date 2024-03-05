@@ -6,6 +6,7 @@ import Dashboard from '../../Views/Dashboard';
 import WelcomeView from '../../Views/WelcomeView'
 
 import './App.css'
+import Error404 from '../../Views/Error404';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/error404" element={<Error404 />} />
       </Routes>
      
     </>

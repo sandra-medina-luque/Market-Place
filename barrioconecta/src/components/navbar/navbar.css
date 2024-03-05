@@ -126,6 +126,12 @@ a {
     margin-left:20px;
 } 
 
+@media screen and (max-width: 1010px){
+    .inputSearch{
+        width: 350px;
+    }
+}
+
 @media screen and (max-width: 950px){
 
     .navBar {
@@ -167,7 +173,6 @@ a {
         font-size: 20px;
         padding: 10px;
     }
-
 
     .menuOpen .iconHolder {
         display: flex;
@@ -227,7 +232,7 @@ a {
 .searchContainer{
     margin-left: 200px;
 }
-}
+
 
 .link:hover, .active {
     color:#FEE846;
@@ -236,16 +241,16 @@ a {
 .menuOpen .link:not(.active):hover  {
     color: none;
 }
-
-@media screen and (max-width: 950px){
-    .searchContainer{
-        margin-left: 150px;
-    }
+.searchContainer{
+    margin-left: 150px;
 }
+
+}
+
 
 @media screen and (max-width: 590px){
     .inputSearch{
-        width: 300px;
+        width: 270px;
     }
 }
 
@@ -271,5 +276,11 @@ a {
 
     nav{
         height: 100px;
+    }
+}
+
+@media screen and (max-width: 390px){
+    #logo{
+        left:25px;
     }
 }
