@@ -1,14 +1,15 @@
-.buttoncategory{
+.buttoncategory {
     background-color: rgba(217, 217, 217, 1);
-   display: flex;
-justify-content: center;
-align-items: center;
-border-radius: 20px;
-border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: none;
     width: 160px;
     height: 150px;
 }
-.filter-buttons{
+
+.filter-buttons {
     display: flex;
     justify-content: space-between;
     margin-left: 80px;
@@ -19,45 +20,47 @@ border: none;
 
 
 .detailed-view {
-    position: fixed; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    background-color: white; 
-    padding: 20px; 
-    z-index: 1000; 
-    border: 1px solid #ccc; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
-  }
-  
- 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
 .detailed-view h2,
 .detailed-view p {
-  text-align: center; 
-  margin-bottom: 10px; 
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .detailed-view button {
-  display: block; 
-  margin: 0 auto; 
+    display: block;
+    margin: 0 auto;
 }
 
-  
+
 
 @media screen and (max-width: 834px) {
-    .buttoncategory{
+    .buttoncategory {
         background-color: rgba(217, 217, 217, 1);
         width: 140px;
         height: 150px;
     }
 
 }
+
 @media screen and (max-width:390px) {
-    .filter-buttons{
+    .filter-buttons {
         display: flex;
         flex-direction: column;
     }
-    .buttoncategory{
+
+    .buttoncategory {
         margin: auto;
     }
 

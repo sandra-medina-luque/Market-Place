@@ -30,18 +30,18 @@ function Log() {
         const userFound = user.find(u => u.username === username && u.password === password);
   
         if (userFound) {
-          // Autenticación exitosa
+       
           Swal.fire({
             icon: 'success',
             title: 'Inicio de sesión exitoso',
             showConfirmButton: false,
-            timer: 1500 // Mostrar durante 1.5 segundos antes de cerrarse automáticamente
+            timer: 1500 
           });
   
-          // Redirect to the dashboard only if login is successful
+          
           navigate("/dashboard");
         } else {
-          // Autenticación fallida
+      
           Swal.fire({
             icon: 'error',
             title: 'Error al iniciar sesión',
@@ -49,11 +49,11 @@ function Log() {
           });
         }
       } else {
-        // Manejar el caso en que no se obtuvieron datos del usuario
+        
         console.error("Error al obtener datos del usuario");
       }
     } catch (error) {
-      // Manejar errores de la llamada al servicio
+      
       console.error("Error al obtener datos del usuario:", error);
     }
   };

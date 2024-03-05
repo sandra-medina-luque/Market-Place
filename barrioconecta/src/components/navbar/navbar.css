@@ -141,16 +141,14 @@ a {
 
     .overlay {
         display: none;
-        /* Ocultar inicialmente el fondo de superposición */
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.3);
-        /* Fondo semi-transparente */
         transition: opacity 0.5s ease;
-        /* Transición de opacidad */
+    
     }
 
     .iconHolder {
@@ -176,13 +174,10 @@ a {
 
     .menuOpen .iconHolder {
         display: flex;
-        /* Mostrar iconHolder cuando el menú está abierto */
-
     }
 
     .menuOpen .overlay {
         display: block;
-        /* Mostrar el fondo de superposición cuando el menú está abierto */
     }
 
     #logo {

@@ -45,7 +45,6 @@ function ServiceForm() {
     useEffect((deletedServiceId) => {
         const fetchServices = async () => {
             try {
-                // Lógica para obtener los servicios solo si deletedServiceId cambia
                 if (deletedServiceId !== null) {
                     const fetchedServices = await userService.getServices();
                     setUserServices(fetchedServices);
@@ -80,7 +79,7 @@ function ServiceForm() {
         formData.append('api_secret', 'VdCth0EexRFyU0RNgiCXKp7D2G4');
 
         try {
-            let imageUrl = service.image; // Use existing image URL for edit, or upload a new one for create
+            let imageUrl = service.image;  
             if (typeof service.image !== 'string') {
                 const res = await fetch(cloudinaryApiUrl, {
                     method: 'POST',
@@ -100,7 +99,6 @@ function ServiceForm() {
             };
 
             if (editingService) {
-                // Update existing service
                 await userService.editService(editingService.id, updatedService);
                 const updatedServices = userServices.map((service) =>
                     service.id === editingService.id ? updatedService : service
@@ -108,7 +106,6 @@ function ServiceForm() {
                 setUserServices(updatedServices);
                 setEditingService(null);
             } else {
-                // Create new service
                 const newUserServices = [...userServices, updatedService];
                 setUserServices(newUserServices);
                 const savedService = await userService.createService(updatedService);

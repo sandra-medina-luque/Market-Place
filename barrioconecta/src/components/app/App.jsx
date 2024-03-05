@@ -21,7 +21,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/error404" element={<Error404 />} />
       </Routes>
-     
+
     </>
   );
 }

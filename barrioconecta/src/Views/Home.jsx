@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-//import ServiceForm from '../serviceForm/ServiceForm'
 import ServiceCardViewer from '../components/serviceCardViewer/ServiceCardViewer';
 import { userService } from '../../userService';
 import Navbar2 from '../components/navbar/Navbar';
@@ -9,7 +8,7 @@ import Footer from '../components/footer/Footer'
 function Home() {
 
   const [userServices, setUserServices] = useState([]);
-  
+
   useEffect(() => {
     const fetchServices = async () => {
       try {
@@ -26,9 +25,9 @@ function Home() {
 
   return (
     <>
-    <Navbar2/>
-     < ServiceCardViewer userServices={userServices} />
-     <Footer/>
+      <Navbar2 />
+      < ServiceCardViewer userServices={userServices} />
+      <Footer />
     </>
   );
 }

@@ -8,7 +8,7 @@ function Navbar() {
     const [desplegableVisible, setDesplegableVisible] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [isLoginPage, setIsLoginPage] = useState(false);
-    
+
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen); "login link"
@@ -26,16 +26,13 @@ function Navbar() {
         event.preventDefault();
 
         if (searchQuery.toLowerCase() === 'cerrar sesión') {
-            // Aquí puedes agregar la lógica específica para cerrar sesión
-            // ...
 
-            // Redirigir a la página de inicio
             navigate('/home');
         }
     };
 
     useEffect(() => {
-        // Actualizar el estado de isLoginPage cuando cambia la ubicación
+
         setIsLoginPage(location.pathname === '/login');
     }, [location.pathname]);
 
@@ -54,7 +51,7 @@ function Navbar() {
                 </Link>
 
                 <div className="overlay" onClick={toggleMenu}></div>
-  
+
                 <div className="searchContainer">
                     <form onSubmit={handleSearchSubmit}>
                         <input className='inputSearch'
@@ -81,7 +78,7 @@ function Navbar() {
 
                     <h3 id='loginButton'>{isLoginPage ? <Link to="/home" className={isLoginPage ? 'login closeactive' : 'closedesable'}>Cerrar Sesión</Link> : <Link to="/login" className={isLoginPage ? 'login closeactive' : 'closedesable'}>Iniciar Sesión</Link>}</h3>
 
-               
+
 
                 </div>
             </nav>

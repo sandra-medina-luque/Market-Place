@@ -102,7 +102,7 @@ function ServiceCardViewer({ userServices }) {
             {selectedService && (
                 <div className="detailed-view">
                     <h2>{selectedService.name}</h2>
-                    <img src={selectedService.image} alt={selectedService.name} style={{ width: '100%', height: '500px', objectFit: 'cover' }} />
+                    <img src={selectedService.image} alt={selectedService.name} style={{ width: '100%', height: '430px', objectFit: 'cover' }} />
                     <p>{selectedService.description}</p>
                     <p>Precio: {selectedService.price} €/hora</p>
                     <p>Categoría: {selectedService.category}</p>

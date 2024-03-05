@@ -13,16 +13,12 @@ function Navbar() {
         event.preventDefault();
 
         if (searchQuery.toLowerCase() === 'cerrar sesión') {
-            // Aquí puedes agregar la lógica específica para cerrar sesión
-            // ...
-
-            // Redirigir a la página de inicio
+        
             navigate('/home');
         }
     };
 
     useEffect(() => {
-        // Actualizar el estado de isLoginPage cuando cambia la ubicación
         setIsLoginPage(location.pathname === '/login');
     }, [location.pathname]);
 

@@ -9,8 +9,8 @@ import Log from './Log.jsx';
 // Mockeo navigate
 const mockedUseNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedUseNavigate,
+    ...jest.requireActual('react-router-dom'),
+    useNavigate: () => mockedUseNavigate,
 }));
 
 
@@ -38,22 +38,22 @@ describe("<Log/>", () => {
 
 
     test("Funcionalidad del botón enviar", () => {
-      render(
+        render(
             <BrowserRouter>
                 <Log />
-             </BrowserRouter>
-         );
+            </BrowserRouter>
+        );
 
-         // Simula la entrada del usuario 
+        // Simula la entrada del usuario 
         const inputUsuario = screen.getByRole('textbox', { name: /Usuario:/i });
         const inputContraseña = screen.getByLabelText(/Contraseña:/i);
 
         fireEvent.change(inputUsuario, { target: { value: 'Gaby' } });
-         fireEvent.change(inputContraseña, { target: { value: 'barrioconecta' } });
+        fireEvent.change(inputContraseña, { target: { value: 'barrioconecta' } });
 
         // Simula clic en el botón
-      const button = screen.getByText(/Conectar/i);
-       fireEvent.click(button);
+        const button = screen.getByText(/Conectar/i);
+        fireEvent.click(button);
 
     });
 

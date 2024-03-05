@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import Logo from '../../../public/img-welcome/logowelc.png';                    /*modifique la ruta de */
-import {Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './welcome.css';
 
 function Welcome() {
