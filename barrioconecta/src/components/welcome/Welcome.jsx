@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import Logo from '../../../public/img-welcome/logowelc.png';
-import {Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './welcome.css';
 
 function Welcome() {
@@ -28,7 +28,7 @@ function Welcome() {
         </div>
         <div className="icons-container">
           <div className="icon" style={{ transform: 'rotate(60deg)' }}>
-          <img src="../img-welcome/Peluqueria-violet.png" alt="Icono 1" />
+            <img src="../img-welcome/Peluqueria-violet.png" alt="Icono 1" />
           </div>
           <div className="icon" style={{ transform: 'rotate(120deg)' }}>
             <img src="../img-welcome/Dentista-skyblue.png" alt="Icono 2" />
