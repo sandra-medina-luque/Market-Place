@@ -20,7 +20,7 @@
 
 **Distinción _FORMAL_ de roles:** Usuario vecino y el usuario emprendedor podrán utilizar esta plataforma de manera gratuita ya que el Ayuntamiento de Cariño cubre la totalidad de mantenimiento de la plataforma.
 ***
-✏️ `FIGMA:` https://www.figma.com/file/7QYSuaxzsmDpb0q9Ty7CEw/Proyecto5?type=design&node-id=254-408&mode=design&t=LVEPsNHsjUa4swlh-0
+✏️ [`FIGMA`](https://www.figma.com/file/7QYSuaxzsmDpb0q9Ty7CEw/Proyecto5?type=design&node-id=254-408&mode=design&t=LVEPsNHsjUa4swlh-0)
 ***
 📋:`TRELLO:` https://trello.com/b/q1puwf1A/market-place
 ***
@@ -32,11 +32,11 @@
 + Cloudinary
 ***
 👩‍💻`MIEMBROS DEL GRUPO:` 
-- [Faby Gaona-Product Owner]( https://github.com/ilfagaro)
-+ **Gabriela Ramos**-Scrum Master https://github.com/GabrielaRamos79 
-+ **Sandra Medina**-Developer https://github.com/sandra-medina-luque  
-+ **Ana Lucena**-Developer https://github.com/AnaLucena  
-+ **Blanca González**-Developer https://github.com/blancaden 
+- [Faby Gaona - Product Owner]( https://github.com/ilfagaro)
+- [Gabriela Ramos - Scrum Master]( https://github.com/GabrielaRamos79 )
+- [Sandra Medina- Developer]( https://github.com/sandra-medina-luque)  
+- [Ana Lucena - Developer ](https://github.com/AnaLucena ) 
+- [Blanca González - Developer]( https://github.com/blancaden )
 ***
 📚`METODOLOGÍA:` 
 + Metodología Agile con Scrum 
