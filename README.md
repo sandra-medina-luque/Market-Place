@@ -32,7 +32,7 @@
 + Cloudinary
 ***
 👩‍💻`MIEMBROS DEL GRUPO:` 
-+ **Faby Gaona**-Product Owner https://github.com/ilfagaro
+- [Faby Gaona-Product Owner]( https://github.com/ilfagaro)
 + **Gabriela Ramos**-Scrum Master https://github.com/GabrielaRamos79 
 + **Sandra Medina**-Developer https://github.com/sandra-medina-luque  
 + **Ana Lucena**-Developer https://github.com/AnaLucena  
